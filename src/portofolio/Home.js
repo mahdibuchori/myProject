@@ -21,9 +21,11 @@ export const Home = () => {
     }, delta);
   
     return () => { clearInterval(ticker) };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text])
   
   const tick = () => {
+      
       let i = loopNum % toRotate.length;
       let fullText = toRotate[i];
       let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
