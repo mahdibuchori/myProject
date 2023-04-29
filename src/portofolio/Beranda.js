@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import './portofolio.css';
-import { LoadingPage } from '../LoadingPage/LoadingPage';
+// import { LoadingPage } from '../LoadingPage/LoadingPage';
 import {Navbar,Container,Nav, Modal} from 'react-bootstrap';
 
 import icon from '../assets/img/logoDagsap.png';
@@ -11,12 +11,11 @@ import { Brand } from './Brand';
 import { Contact } from './Contact';
 import { Footer } from './Footer';
 
-
 const ID_REGEX = /^[a-zA-Z0-9]{3,16}$/
 
 export const Beranda = ({setAuth}) => {
     const [show, setShow] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
     const [scrolled, seSrcolled] = useState(false);
@@ -368,7 +367,7 @@ export const Beranda = ({setAuth}) => {
         <Footer/>
     </div>
 
-    {isLoading ? <LoadingPage/> : ""}
+    {/* isLoading ? <LoadingPage/> : "" */}
 
     </>
   )
