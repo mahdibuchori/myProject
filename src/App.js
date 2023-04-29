@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,9 +7,13 @@ import { Beranda } from './portofolio/Beranda';
 
 function App() {
   return (
-    <div className="App">
-      <Beranda />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route exact path="/" element={<Beranda/>} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

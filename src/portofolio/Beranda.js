@@ -1,12 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import './portofolio.css';
-// import axios from 'axios';
-// import Swal from "sweetalert2";
 import { LoadingPage } from '../LoadingPage/LoadingPage';
 import {Navbar,Container,Nav, Modal} from 'react-bootstrap';
-// import useAuthStore, { selectOnAuth, selectAuthReady } from '../store/authLogin';
-// import useMaterialStore, { selectFetchMaterial, selectMaterialReady } from '../store/listBarang';
-// import useProviderStore, { selectFetchProvider, selectProviderReady} from '../store/listProvider';
 
 import icon from '../assets/img/logoDagsap.png';
 import { Home } from './Home';
