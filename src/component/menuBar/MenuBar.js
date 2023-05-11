@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './menuBar.css';
 
