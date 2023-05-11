@@ -1,0 +1,31 @@
+.maintenancePage{
+    flex: 5;
+    margin-top: 40px;
+    height: calc(100vh - 55px);
+}
+
+.maintenanceWidget{
+    display: block;
+    margin: 20px;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30%;
+}
+
+.maintenanceWidget .icon{
+    position: relative;
+    display: block;
+}
+
+.maintenanceWidget .icon i{
+    color: var(--blue);
+    font-size: 5em;
+    text-align: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 991px){
+    .maintenancePage{
+        height: calc(100vh - 100px);
+    }
+}

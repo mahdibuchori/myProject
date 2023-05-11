@@ -1,0 +1,12 @@
+.containersbox{
+    display: flex;
+    margin-top: 10px;
+}
+.cobau{
+    flex: 0.89;
+    height: calc(100vh - 10px);
+    position: sticky;
+    margin-top: 100px;
+    background: var(--blue);
+    display: block;
+}

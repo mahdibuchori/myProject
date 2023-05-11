@@ -1,0 +1,82 @@
+.sidebar{
+    flex: 0.89;
+    height: calc(100vh - 10px);
+    position: sticky;
+    top: 50px;
+    background: var(--blue);
+    display: block;
+}
+
+.sidebar ul{
+    margin-top: 50px;
+    left: 0;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 10px;
+}
+
+.sidebar ul li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active{
+  background: var(--white);
+}
+
+.sidebar ul li:nth-child(1){
+    margin-top: 20px;
+}
+
+.sidebar ul li .coverAll{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.sidebar ul li:hover .coverAll,
+.sidebar ul li.active .coverAll{
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.sidebar ul li .coverAll .icon{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sidebar ul li .coverAll .icon i{
+    font-size: 1.5em;
+}
+
+.sidebar ul li .coverAll .title{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+
+@media screen and (max-width: 991px){
+    .sidebar{
+        display: none;
+    }
+  }

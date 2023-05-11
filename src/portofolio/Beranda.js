@@ -1,7 +1,11 @@
 import React, { useState,useEffect } from 'react';
 import './portofolio.css';
-// import { LoadingPage } from '../LoadingPage/LoadingPage';
+import Swal from "sweetalert2";
+import { LoadingPage } from '../LoadingPage/LoadingPage';
 import {Navbar,Container,Nav, Modal} from 'react-bootstrap';
+
+import { API_AUTH } from '../apis/apisData';
+import useAuthStore, { selectOnAuth, selectAuthReady, selectAuthFalse } from '../store/authLogin';
 
 import icon from '../assets/img/logoDagsap.png';
 import { Home } from './Home';
@@ -15,7 +19,7 @@ const ID_REGEX = /^[a-zA-Z0-9]{3,16}$/
 
 export const Beranda = ({setAuth}) => {
     const [show, setShow] = useState(false);
-    // const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
     const [scrolled, seSrcolled] = useState(false);
@@ -32,8 +36,9 @@ export const Beranda = ({setAuth}) => {
 
     const [matchPwd, setMatchPwd] = useState('');
 
-    // const onAuth = useAuthStore(selectOnAuth);
-    // const authReady = useAuthStore(selectAuthReady);
+    const onAuth = useAuthStore(selectOnAuth);
+    const authReady = useAuthStore(selectAuthReady);
+    const authFalse = useAuthStore(selectAuthFalse);
     // const fetchMaterial = useMaterialStore(selectFetchMaterial);
     // const materialReady = useMaterialStore(selectMaterialReady);
     // const fetchProvider = useProviderStore(selectFetchProvider);
@@ -65,7 +70,7 @@ export const Beranda = ({setAuth}) => {
         document.querySelector('.box-log').classList.add('active');
     }
 
-    /* const onSubmitForm = async (e) =>{
+    const onSubmitForm = async (e) =>{
         e.preventDefault()
         const v1 = ID_REGEX.test(idkar);
         const v2 = pwd;
@@ -84,16 +89,22 @@ export const Beranda = ({setAuth}) => {
         }
         try {
             setIsLoading(true);
-
-            const response = await axios.post('http://localhost:8081/dpanel/authLog',{
+            await authFalse();
+            const response = await API_AUTH.post(`/authLog`, {
                 "idKar" : idkar,
                 "pwd" : pwd
             });
 
+            console.log(response.data)
             const parseRes = response.data;
             await onAuth(`${parseRes.token}`)
+            const data  = await API_AUTH.get(`/dashboard`,{headers: { 
+                'Access-Control-Allow-Origin': '*', 
+                'Content-type': 'Application/json', 
+                'authorization': parseRes.token
+              }})
+            console.log(data)
             localStorage.clear();
-
             if(parseRes.token){
                 setTimeout(() => {
                     setIsLoading(false);
@@ -121,13 +132,9 @@ export const Beranda = ({setAuth}) => {
             setTimeout(() => {
                 setIsLoading(false);
             }, 1000);
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: "Password dan id karyawan salah"
-            });
+            Swal.fire('Oops...','Password dan id karyawan salah','error');
         }
-    } */
+    }
 
     const myFunction = (e) => {
         var x = document.getElementById("myInput");
@@ -261,7 +268,7 @@ export const Beranda = ({setAuth}) => {
                 <div className="is-form">
                         <span onClick={handleClose} className="close-button"><i className="bi bi-x-circle-fill"></i></span>
                         <div className="form FormSignin">
-                            <form onSubmit={"onSubmitForm"}>
+                            <form onSubmit={onSubmitForm}>
                                 <h3>Sign In</h3>
                                 <input 
                                     type="text" 
@@ -367,7 +374,7 @@ export const Beranda = ({setAuth}) => {
         <Footer/>
     </div>
 
-    {/* isLoading ? <LoadingPage/> : "" */}
+    {isLoading ? <LoadingPage/> : ""}
 
     </>
   )

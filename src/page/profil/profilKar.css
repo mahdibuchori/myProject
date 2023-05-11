@@ -1,0 +1,84 @@
+.profilKar{
+    flex: 5;
+    margin-top: 50px;
+    height: calc(100vh - 55px);
+    padding: 0 10px;
+}
+
+.prof-ats {
+    background-color: #f1f1f1;
+    text-align: right;
+    height: 40px;
+    justify-content: space-between;
+}
+
+.prof-ats button{
+    border: none;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.prof-ats button:hover{
+    border: 1px solid var(--blue);
+    background-color: var(--white);
+    color: var(--blue);
+}
+
+.card {
+    /* box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06); */
+    box-shadow: 0px 1px 7px 1px rgba(25, 0, 255, 0.49);
+    -webkit-box-shadow: 0px 1px 7px 1px rgba(25, 0, 255, 0.49);
+    -moz-box-shadow: 0px 1px 7px 1px rgba(25, 0, 255, 0.49);
+}
+
+.shawd {
+    margin-bottom: 10px;
+    /* box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06); */
+    box-shadow: 5px 7px 7px -5px rgba(0,0,0,0.49);
+    -webkit-box-shadow: 5px 7px 7px -5px rgba(0,0,0,0.49);
+    -moz-box-shadow: 5px 7px 7px -5px rgba(0,0,0,0.49);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}

@@ -1,0 +1,43 @@
+.topbar{
+    width: 100%;
+    height: 50px;
+    background-color: var(--white);
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    /* border-bottom: 0.3px solid var(--black2); */
+    /* -webkit-box-shadow: 0px 0px 12px -10px rgba(0, 0, 0, 0.75) inset;
+    box-shadow: 0px 0px 12px -10px rgba(0, 0, 0, 0.75) inset; */
+
+    box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.49);
+    -webkit-box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.49);
+    -moz-box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.49);
+}
+
+.topName{
+    text-align: left;
+    padding: 10px 0 0 10px ;
+    font-size: 16px;
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.topOut{
+    text-align: right;
+    padding: 3px 15px 0 0 ;
+    font-weight: bold;
+}
+.btnOut{
+    padding: 8px;
+    color: var(--blue);
+    border: none;
+    border-radius: 8px;
+}
+
+.btnOut:hover{
+    padding: 8px 0 0 0;
+    border-bottom: 3px double var(--blue);
+    border-radius: 0;
+}
