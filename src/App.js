@@ -9,7 +9,10 @@ import { API_AUTH } from './apis/apisData';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  const API_KEY =`${process.env.REACT_APP_API_KEY_YT}`;
+  const API_KEYGG =`${process.env.REACT_APP_API_KEY_GG}`
+  console.log("API", API_KEY);
+  console.log("API", API_KEYGG);
   const setAuth = boolean => {
     setIsAuthenticated(boolean);
   }

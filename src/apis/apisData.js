@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const urlAuth = 'https://panel.dagsapp.com/dpanel';
-const urlGsheet = 'https://script.google.com/macros/s/AKfycbw8GFlO5oyfOUhmHntCwoXi5pJpxBtxvh3sYkePeVFu08CZrf06HQ6FHvYFHqscczTZ';
+const urlAuth = `${process.env.REACT_APP_API_KEY_YT}`;
+const urlGsheet = `${process.env.REACT_APP_API_KEY_GG}`
 
 export const API_AUTH = axios.create({
     baseURL: urlAuth,

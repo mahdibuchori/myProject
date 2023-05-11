@@ -8,6 +8,8 @@
 # testing
 /coverage
 
+# API key
+.env
 # production
 /build
 
