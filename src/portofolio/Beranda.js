@@ -95,7 +95,6 @@ export const Beranda = ({setAuth}) => {
                 "pwd" : pwd
             });
 
-            console.log(response.data)
             const parseRes = response.data;
             await onAuth(`${parseRes.token}`)
             const data  = await API_AUTH.get(`/dashboard`,{headers: { 
@@ -103,7 +102,7 @@ export const Beranda = ({setAuth}) => {
                 'Content-type': 'Application/json', 
                 'authorization': parseRes.token
               }})
-            console.log(data)
+            console.info(data)
             localStorage.clear();
             if(parseRes.token){
                 setTimeout(() => {
@@ -121,11 +120,7 @@ export const Beranda = ({setAuth}) => {
                     setIsLoading(false);
                 }, 1000);
                 setAuth(false);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: parseRes.message
-                })
+                Swal.fire("Oops...",parseRes.message,'error')
             }
         } 
         catch (error) {
