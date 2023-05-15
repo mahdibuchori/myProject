@@ -112,3 +112,15 @@ nav.navbar .navbar-nav a.nav-link.navbar-link.active {
     margin-bottom: 5px;
   }
 }
+
+.containerStyle{
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 991px){
+  .containerStyle{
+      width: 500;
+      height: 500;
+  }
+}

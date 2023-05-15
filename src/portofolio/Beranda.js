@@ -6,6 +6,7 @@ import {Navbar,Container,Nav, Modal} from 'react-bootstrap';
 
 import { API_AUTH } from '../apis/apisData';
 import useAuthStore, { selectOnAuth, selectAuthReady, selectAuthFalse } from '../store/authLogin';
+import useMaterialStore, { selectFetchMaterial, selectMaterialReady } from '../store/listBarang';
 
 import icon from '../assets/img/logoDagsap.png';
 import { Home } from './Home';
@@ -39,8 +40,8 @@ export const Beranda = ({setAuth}) => {
     const onAuth = useAuthStore(selectOnAuth);
     const authReady = useAuthStore(selectAuthReady);
     const authFalse = useAuthStore(selectAuthFalse);
-    // const fetchMaterial = useMaterialStore(selectFetchMaterial);
-    // const materialReady = useMaterialStore(selectMaterialReady);
+    const fetchMaterial = useMaterialStore(selectFetchMaterial);
+    const materialReady = useMaterialStore(selectMaterialReady);
     // const fetchProvider = useProviderStore(selectFetchProvider);
     // const providerReady = useProviderStore(selectProviderReady);
     
@@ -141,6 +142,15 @@ export const Beranda = ({setAuth}) => {
         }
         
     }
+
+    useEffect(() =>{
+        fetchMaterial();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+     },[]);
+
+   useEffect(() => {
+       if (!materialReady) return;
+   }, [materialReady]);
 
     const handleSubmit = (e) =>{
         e.preventDefault()

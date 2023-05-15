@@ -15,6 +15,7 @@ import { MenuMaintenance } from '../../menuDivisi/MenuMaintenance';
 
 import useAuthStore, { selectUser } from '../../store/authLogin';
 import { CetakPengadaan } from '../../page/forms/pengadaan/CetakPengadaan';
+import { DataStok } from '../../page/forms/datastok/DataStok';
 export const MenuBar = ({setAuth}) => {
 
   const userData = useAuthStore(selectUser);
@@ -60,6 +61,9 @@ export const MenuBar = ({setAuth}) => {
                     <Route path={`/${divisi}/Pengadaan/Create PO`} element={<SubmitPengadaan />} />
                     <Route path={`/${divisi}/Pengadaan/NewCreate`} element={<CreatePo />} />
                      */}
+
+                     {/* DATA STOK */}
+                  <Route exact path={"/"+divisi+"/STOKGUDANG"} element={<DataStok/>} />
 
                 </Routes>
             </div>
