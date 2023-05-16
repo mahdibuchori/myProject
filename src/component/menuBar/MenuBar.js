@@ -16,6 +16,10 @@ import { MenuMaintenance } from '../../menuDivisi/MenuMaintenance';
 import useAuthStore, { selectUser } from '../../store/authLogin';
 import { CetakPengadaan } from '../../page/forms/pengadaan/CetakPengadaan';
 import { DataStok } from '../../page/forms/datastok/DataStok';
+import { InputStok } from '../../page/forms/datastok/InputStok';
+import { EksternalProvider } from '../../page/forms/eksternalProvider/EksternalProvider';
+import { InputProvider } from '../../page/forms/eksternalProvider/InputProvider';
+import { UpdateProvider } from '../../page/forms/eksternalProvider/UpdateProvider';
 export const MenuBar = ({setAuth}) => {
 
   const userData = useAuthStore(selectUser);
@@ -63,7 +67,13 @@ export const MenuBar = ({setAuth}) => {
                      */}
 
                      {/* DATA STOK */}
-                  <Route exact path={"/"+divisi+"/STOKGUDANG"} element={<DataStok/>} />
+                    <Route exact path={"/"+divisi+"/STOKGUDANG"} element={<DataStok/>} />
+                    <Route exact path={"/"+divisi+"/STOKGUDANG/create"} element={<InputStok />} />
+
+                    {/*Eksternal Provider */}
+                  <Route exact path={"/"+divisi+"/EksternalProvider"} element={<EksternalProvider />} />
+                  <Route exact path={"/"+divisi+"/EksternalProvider/Create"} element={<InputProvider />} />
+                  <Route exact path={"/"+divisi+"/EksternalProvider/Update"} element={<UpdateProvider />} />
 
                 </Routes>
             </div>

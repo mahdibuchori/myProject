@@ -138,3 +138,12 @@ export const FileTukar = [
   { value: 'YEN', label: 'YEN' },
   { value: 'SGD', label: 'SGD' },
 ]
+
+export const FileKartu = [
+  { value: 'ITS', label: 'ITS' },
+  { value: 'ITY', label: 'ITY' },
+  { value: 'OKP', label: 'OKP' },
+  { value: 'RI', label: 'RI' },
+  { value: 'SO', label: 'SO' },
+  { value: 'SJ', label: 'SJ' },
+]

@@ -17,7 +17,6 @@ const changeHandler = (e, props) => {
 };
 
 const Select = (props) => {
-  console.log(props)
   const inputProps = {
     name: props.name,
     placeholder: props.placeholder || `Select ${props.title}`,

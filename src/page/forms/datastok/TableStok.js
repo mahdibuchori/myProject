@@ -189,7 +189,7 @@ export const TableStok = () => {
                     Menu
                     </Dropdown.Toggle>
                     <Dropdown.Menu variant="dark">
-                        <Dropdown.Item><i class="bi bi-pencil"></i> Create</Dropdown.Item>
+                        <Dropdown.Item onClick={() => backhome(`/main/${userData.user_divisi}/STOKGUDANG/create`)}><i class="bi bi-pencil"></i> Create</Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Item ><i className="bi bi-printer"></i> Print</Dropdown.Item>
                         <Dropdown.Divider />
@@ -382,7 +382,7 @@ export const TableStok = () => {
             onSelect={(k) => setKey(k)}
             className="mb-3"
             >
-            <Tab eventKey="Inggredient" title="Inggredient">
+            <Tab eventKey="Inggredient" title={`Inggredient (${rowInggredient.length})`}>
                 <div style={{width: width, height: height, padding: "0px 10px 0px 10px"}} className="ag-theme-alpine">
                     <AgGridReact
                         ref={gridRef}
@@ -393,7 +393,7 @@ export const TableStok = () => {
                     ></AgGridReact>
                 </div>
             </Tab>
-            <Tab eventKey="Packaging" title="Packaging">
+            <Tab eventKey="Packaging" title={`Packaging (${rowPackaging.length})`}>
                 <div style={{width: width, height: height, padding: "0px 10px 0px 10px"}} className="ag-theme-alpine">
                     <AgGridReact
                         ref={gridRef}
@@ -404,7 +404,7 @@ export const TableStok = () => {
                     ></AgGridReact>
                 </div>
             </Tab>
-            <Tab eventKey="Daging" title="Daging">
+            <Tab eventKey="Daging" title={`Daging (${rowDaging.length})`}>
                 <div style={{width: width, height: height, padding: "0px 10px 0px 10px"}} className="ag-theme-alpine">
                     <AgGridReact
                         ref={gridRef}
@@ -415,7 +415,7 @@ export const TableStok = () => {
                     ></AgGridReact>
                 </div>
             </Tab>
-            <Tab eventKey="Kimia" title="Kimia">
+            <Tab eventKey="Kimia" title={`Kimia (${rowKimia.length})`}>
                 <div style={{width: width, height: height, padding: "0px 10px 0px 10px"}} className="ag-theme-alpine">
                     <AgGridReact
                         ref={gridRef}
@@ -426,7 +426,7 @@ export const TableStok = () => {
                     ></AgGridReact>
                 </div>
             </Tab>
-            <Tab eventKey="Lain-lain" title="Lain-lain">
+            <Tab eventKey="Lain-lain" title={`Lain-lain (${rowLain.length})`}>
                 <div style={{width: width, height: height, padding: "0px 10px 0px 10px"}} className="ag-theme-alpine">
                     <AgGridReact
                         ref={gridRef}
