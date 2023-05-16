@@ -382,7 +382,7 @@ export const TableStok = () => {
             onSelect={(k) => setKey(k)}
             className="mb-3"
             >
-            <Tab eventKey="Inggredient" title={`Inggredient (${rowInggredient.length})`}>
+            <Tab eventKey="Inggredient" title={`Inggredient`}>
                 <div style={{width: width, height: height, padding: "0px 10px 0px 10px"}} className="ag-theme-alpine">
                     <AgGridReact
                         ref={gridRef}
@@ -393,7 +393,7 @@ export const TableStok = () => {
                     ></AgGridReact>
                 </div>
             </Tab>
-            <Tab eventKey="Packaging" title={`Packaging (${rowPackaging.length})`}>
+            <Tab eventKey="Packaging" title={`Packaging`}>
                 <div style={{width: width, height: height, padding: "0px 10px 0px 10px"}} className="ag-theme-alpine">
                     <AgGridReact
                         ref={gridRef}
@@ -404,7 +404,7 @@ export const TableStok = () => {
                     ></AgGridReact>
                 </div>
             </Tab>
-            <Tab eventKey="Daging" title={`Daging (${rowDaging.length})`}>
+            <Tab eventKey="Daging" title={`Daging`}>
                 <div style={{width: width, height: height, padding: "0px 10px 0px 10px"}} className="ag-theme-alpine">
                     <AgGridReact
                         ref={gridRef}
@@ -415,7 +415,7 @@ export const TableStok = () => {
                     ></AgGridReact>
                 </div>
             </Tab>
-            <Tab eventKey="Kimia" title={`Kimia (${rowKimia.length})`}>
+            <Tab eventKey="Kimia" title={`Kimia`}>
                 <div style={{width: width, height: height, padding: "0px 10px 0px 10px"}} className="ag-theme-alpine">
                     <AgGridReact
                         ref={gridRef}
@@ -426,7 +426,7 @@ export const TableStok = () => {
                     ></AgGridReact>
                 </div>
             </Tab>
-            <Tab eventKey="Lain-lain" title={`Lain-lain (${rowLain.length})`}>
+            <Tab eventKey="Lain-lain" title={`Lain-lain`}>
                 <div style={{width: width, height: height, padding: "0px 10px 0px 10px"}} className="ag-theme-alpine">
                     <AgGridReact
                         ref={gridRef}
