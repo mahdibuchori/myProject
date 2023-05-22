@@ -20,6 +20,7 @@ import { InputStok } from '../../page/forms/datastok/InputStok';
 import { EksternalProvider } from '../../page/forms/eksternalProvider/EksternalProvider';
 import { InputProvider } from '../../page/forms/eksternalProvider/InputProvider';
 import { UpdateProvider } from '../../page/forms/eksternalProvider/UpdateProvider';
+import { ListStok } from '../../page/forms/datastok/ListStok';
 export const MenuBar = ({setAuth}) => {
 
   const userData = useAuthStore(selectUser);
@@ -69,6 +70,7 @@ export const MenuBar = ({setAuth}) => {
                      {/* DATA STOK */}
                     <Route exact path={"/"+divisi+"/STOKGUDANG"} element={<DataStok/>} />
                     <Route exact path={"/"+divisi+"/STOKGUDANG/create"} element={<InputStok />} />
+                    <Route exact path={"/"+divisi+"/STOKGUDANG/List"} element={<ListStok />} />
 
                     {/*Eksternal Provider */}
                   <Route exact path={"/"+divisi+"/EksternalProvider"} element={<EksternalProvider />} />

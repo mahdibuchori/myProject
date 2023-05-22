@@ -1,12 +1,12 @@
 import React from 'react';
 // import Swal from "sweetalert2";
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {OverlayTrigger, Tooltip} from 'react-bootstrap';
-// import useAuthStore, { selectUser } from '../../../store/authLogin';
+import useAuthStore, { selectUser } from '../../../store/authLogin';
 
 export const BtnStok = (props) => {
-    // const navigate = useNavigate();
-    // const userData = useAuthStore(selectUser);
+    const navigate = useNavigate();
+    const userData = useAuthStore(selectUser);
 
     const renderHapus = (props) => (
         <Tooltip id="button-tooltip" {...props}>
@@ -26,6 +26,13 @@ export const BtnStok = (props) => {
         </Tooltip>
     )
 
+    const handleList = () =>{
+        navigate(`/main/${userData.user_divisi}/STOKGUDANG/List`,{state:{
+            data : props.data
+          }});
+            console.log(props.data)
+    }
+
   return (
     <>
         <span style={{display: 'flex'}}>
@@ -37,6 +44,7 @@ export const BtnStok = (props) => {
                 <button
                     style={{ height: 30, lineHeight: 0.5 }}
                     className="buttonSet"
+                    onClick={()=>handleList()}
                 >
                 <i className="bi bi-clipboard"></i>
                 </button>

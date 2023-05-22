@@ -185,7 +185,7 @@ export const InputStok = () => {
                 console.log(data)
                 await API_AUTH.post(`/Gudang`, {
                     id_item: idItem,
-                    item : item,
+                    item : item.toUpperCase(),
                     unit : form.cekSatuan,
                     saldo_awal : saldoAwal,
                     pengad_lama : `${pengadaanLama}`,
@@ -287,6 +287,7 @@ export const InputStok = () => {
                         <Form.Control
                             required
                             type="text"
+                            value={item.toUpperCase()}
                             onChange={ (e) => setItem(e.target.value) }
                         />
                         <Form.Control.Feedback type="invalid">Harap Input Nama Material</Form.Control.Feedback>

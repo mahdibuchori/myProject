@@ -13,3 +13,8 @@
     height: 40px;
     justify-content: space-between;
 }
+
+.box-card {
+    
+    box-shadow: 2px 2px 12px rgba(43, 23, 172, 0.623), -1px -1px 8px rgba(53, 47, 221, 0.53);
+}

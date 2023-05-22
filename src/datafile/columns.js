@@ -43,7 +43,6 @@ export const COLUMNS_GUDANG =[
         field : 'ket_limit',
         width: 105,
         cellStyle: function(params) {
-            console.log(params.value)
             if (params.value ==='STOCK LIMIT') {
                 return {color: '#800000', backgroundColor: '#d07979a7', borderRadius: '8px', height: 30, lineHeight: 2, marginTop: '5px',textAlign: 'center'};
                 

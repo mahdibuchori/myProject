@@ -140,10 +140,11 @@ export const FileTukar = [
 ]
 
 export const FileKartu = [
-  { value: 'ITS', label: 'ITS' },
-  { value: 'ITY', label: 'ITY' },
-  { value: 'OKP', label: 'OKP' },
-  { value: 'RI', label: 'RI' },
-  { value: 'SO', label: 'SO' },
-  { value: 'SJ', label: 'SJ' },
+  { value: 'ITS', label: 'ITS (Pindah Barang dari Sentul ke Yogya)' },
+  { value: 'ITY', label: 'ITY (Pindah Barang dari Yogya ke Sentul)' },
+  { value: 'OKP', label: 'OKP (Order Kerja Produksi)' },
+  { value: 'PB', label: 'PB (Penyesuaian Barang)' },
+  { value: 'RI', label: 'RI (Recived Item)' },
+  { value: 'SO', label: 'SO (Stock Opname)' },
+  { value: 'SJ', label: 'SJ (Surat Jalan)' },
 ]

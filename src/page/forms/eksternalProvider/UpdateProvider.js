@@ -167,7 +167,7 @@ export const UpdateProvider = () => {
         <Container>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <div className="d-flex justify-content-between align-items-lg-center py-2 flex-column flex-lg-row">
-                <h2 className="h5 mb-2 mb-lg-0">Create New Eksternal Provider</h2>
+                <h2 className="h5 mb-2 mb-lg-0">Data Eksternal Provider</h2>
             </div>
             <div className="row">
                 <div className='col-lg-4'>
