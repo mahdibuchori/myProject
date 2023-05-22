@@ -290,13 +290,13 @@ export const PreviewPoPdf = () => {
                                         <View style={[styles.row,{width: '60mm',height: '30mm', textAlign: 'center'}]}>
                                             <View style={[{width: '20mm', marginTop: '2mm'}]}>
                                                 <Text>Disiapkan Oleh</Text>
-                                                <Image style={{width: '16mm', height:'16mm', marginLeft : '2mm', marginTop: '2mm'}} src={`http://api.qrserver.com/v1/create-qr-code/?data=Endang W`}/> 
+                                                <Image style={{width: '16mm', height:'16mm', marginLeft : '2mm', marginTop: '2mm'}} src={`https://api.qrserver.com/v1/create-qr-code/?&data=Endang W`}/> 
                                                 <Text style={{marginTop: '2mm'}}>Endang W</Text>
                                             </View>
                                             <View style={[{width: '20mm', marginLeft : '1mm', marginTop: '2mm'}]}>
                                                 <Text>Diperiksa Oleh</Text>
                                                 {stVeri ?
-                                                    <Image style={{width: '16mm', height:'16mm', marginLeft : '2mm', marginTop: '2mm'}} src={`http://api.qrserver.com/v1/create-qr-code/?data=Mawi Prabudi`}/> 
+                                                    <Image style={{width: '16mm', height:'16mm', marginLeft : '2mm', marginTop: '2mm'}} src={`https://api.qrserver.com/v1/create-qr-code/?&data=Mawi Prabudi`}/> 
                                                     :
                                                     <Text style={{width: '16mm', height:'16mm', marginLeft : '2mm', marginTop: '2mm'}}> </Text>
                                                 }
@@ -305,7 +305,7 @@ export const PreviewPoPdf = () => {
                                             <View style={[{width: '20mm', marginLeft : '1mm', marginTop: '2mm'}]}>
                                                 <Text>Disiapkan Oleh</Text>
                                                 {stAppro ? 
-                                                    <Image style={{width: '16mm', height:'16mm', marginLeft : '2mm', marginTop: '2mm'}} src={`http://api.qrserver.com/v1/create-qr-code/?data=Rusli Adna`}/> 
+                                                    <Image style={{width: '16mm', height:'16mm', marginLeft : '2mm', marginTop: '2mm'}} src={`https://api.qrserver.com/v1/create-qr-code/?&data=Rusli Adna`}/> 
                                                     :
                                                     <Text style={{width: '16mm', height:'16mm', marginLeft : '2mm', marginTop: '2mm'}}> </Text>
                                                 }
