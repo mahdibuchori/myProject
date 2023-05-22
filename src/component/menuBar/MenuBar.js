@@ -27,6 +27,9 @@ import { UpdatePengadaan } from '../../page/forms/pengadaan/UpdatePengadaan';
 import { SubmitPengadaan } from '../../page/forms/pengadaan/SubmitPengadaan';
 import { VerifyPengadaan } from '../../page/forms/pengadaan/VerifyPengadaan';
 import { CreatePo } from '../../page/forms/purchaseorder/CreatePo';
+import { DataPo } from '../../page/forms/purchaseorder/DataPo';
+import { PreviewPoPdf } from '../../page/forms/purchaseorder/PreviewPoPdf';
+import { ListPo } from '../../page/forms/purchaseorder/ListPo';
 export const MenuBar = ({setAuth}) => {
 
   const userData = useAuthStore(selectUser);
@@ -77,9 +80,14 @@ export const MenuBar = ({setAuth}) => {
                     <Route exact path={"/"+divisi+"/STOKGUDANG/List"} element={<ListStok />} />
 
                     {/*Eksternal Provider */}
-                  <Route exact path={"/"+divisi+"/EksternalProvider"} element={<EksternalProvider />} />
-                  <Route exact path={"/"+divisi+"/EksternalProvider/Create"} element={<InputProvider />} />
-                  <Route exact path={"/"+divisi+"/EksternalProvider/Update"} element={<UpdateProvider />} />
+                    <Route exact path={"/"+divisi+"/EksternalProvider"} element={<EksternalProvider />} />
+                    <Route exact path={"/"+divisi+"/EksternalProvider/Create"} element={<InputProvider />} />
+                    <Route exact path={"/"+divisi+"/EksternalProvider/Update"} element={<UpdateProvider />} />
+
+                    {/* Purchasing */}
+                    <Route exact path={"/"+divisi+"/Purchasing"} element={<ListPo />} />
+                    <Route exact path={"/"+divisi+"/Purchasing/Data"} element={<DataPo />} />
+                    <Route exact path={"/"+divisi+"/Purchasing/PreviewPO"} element={<PreviewPoPdf />} />
 
                 </Routes>
             </div>
