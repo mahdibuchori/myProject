@@ -21,6 +21,12 @@ import { EksternalProvider } from '../../page/forms/eksternalProvider/EksternalP
 import { InputProvider } from '../../page/forms/eksternalProvider/InputProvider';
 import { UpdateProvider } from '../../page/forms/eksternalProvider/UpdateProvider';
 import { ListStok } from '../../page/forms/datastok/ListStok';
+import { Pengadaan } from '../../page/forms/pengadaan/Pengadaan';
+import { CreatePengadaan } from '../../page/forms/pengadaan/CreatePengadaan';
+import { UpdatePengadaan } from '../../page/forms/pengadaan/UpdatePengadaan';
+import { SubmitPengadaan } from '../../page/forms/pengadaan/SubmitPengadaan';
+import { VerifyPengadaan } from '../../page/forms/pengadaan/VerifyPengadaan';
+import { CreatePo } from '../../page/forms/purchaseorder/CreatePo';
 export const MenuBar = ({setAuth}) => {
 
   const userData = useAuthStore(selectUser);
@@ -59,14 +65,12 @@ export const MenuBar = ({setAuth}) => {
 
                     {/*Pengadaan */}
                     <Route path={`/${divisi}/Pengadaan/Preview`} element={<CetakPengadaan />} />
-                    {/* <Route path={`/${divisi}/Pengadaan`} element={<Pengadaan />} />
+                    <Route path={`/${divisi}/Pengadaan`} element={<Pengadaan />} />
                     <Route path={`/${divisi}/Pengadaan/Create`} element={<CreatePengadaan />} />
                     <Route path={`/${divisi}/Pengadaan/Update`} element={<UpdatePengadaan />} />
-                    <Route path={`/${divisi}/Pengadaan/Verifikasi`} element={<VerifyPengadaan />} />
                     <Route path={`/${divisi}/Pengadaan/Create PO`} element={<SubmitPengadaan />} />
+                    <Route path={`/${divisi}/Pengadaan/Verifikasi`} element={<VerifyPengadaan />} />
                     <Route path={`/${divisi}/Pengadaan/NewCreate`} element={<CreatePo />} />
-                     */}
-
                      {/* DATA STOK */}
                     <Route exact path={"/"+divisi+"/STOKGUDANG"} element={<DataStok/>} />
                     <Route exact path={"/"+divisi+"/STOKGUDANG/create"} element={<InputStok />} />

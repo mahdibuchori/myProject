@@ -82,8 +82,7 @@ export const ListStok = () => {const navigate = useNavigate();
     }; */
 
     const cekData = () =>{
-        console.log(location.state.data);
-        const pengad_cepat = "5";
+        /* const pengad_cepat = "5";
         const pengad_lama = "4";
         let avg = ((parseFloat(pengad_cepat) + parseFloat(pengad_lama)) / 2).toFixed(3);
         let nilai = avg * 1;
@@ -95,7 +94,7 @@ export const ListStok = () => {const navigate = useNavigate();
         let str = 'Yona Nugget Ayam Reg 500 Gr '
 		let outStr = str.trim();
         console.log(str.length)
-        console.log(outStr.length)
+        console.log(outStr.length) */
         setIsLoading(false)
     }
 

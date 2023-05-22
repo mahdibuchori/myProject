@@ -1,0 +1,29 @@
+.orderpurchase{
+    flex: 5;
+    margin: 50px 5px 5px 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.orderpurchase-item-top {
+    display: flex;
+    background-color: #f1f1f1;
+    text-align: right;
+    height: 40px;
+    justify-content: space-between;
+}
+.orderpurchase-item-create {
+    height: calc(100% - 90px);
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.nmTeks {
+    cursor: pointer;
+}
+
+.nmTeks:hover{
+    color: #0d0db1;
+    border-bottom: 1px solid #0d0db1;
+}
