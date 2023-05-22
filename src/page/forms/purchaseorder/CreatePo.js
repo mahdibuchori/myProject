@@ -116,7 +116,7 @@ export const CreatePo = () => {
         setTglKirim(date[0].tglDatang);
 
         setDataReady(true);
-        setIsLoading(false)
+        setIsLoading(false);
     }
 
     const onProviderReady = () =>{
@@ -129,6 +129,7 @@ export const CreatePo = () => {
             return { value: element.nama_provider, label: element.nama_provider, id_provider: element.id_provider, nilai_tukar : element.nilai_tukar, syarat_bayar : element.syarat_bayar };
         });
         setProvider(modifiedArr);
+        setIsLoading(false)
     }
 
     const cekHarga = (e,idx) => {
