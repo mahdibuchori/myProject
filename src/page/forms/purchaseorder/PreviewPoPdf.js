@@ -79,7 +79,7 @@ export const PreviewPoPdf = () => {
     const [stAppro, setStAppro] = useState(false);
     const [stVeri, setStVeri] = useState(false);
     const bulan = ['','Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-
+    
     useEffect(() => {
         setIsLoading(true);
         if(location.state === null) {
@@ -144,8 +144,9 @@ export const PreviewPoPdf = () => {
         setDiskon(parseFloat(location.state.data.diskon).toFixed(2));
         setTotalSub(parseFloat(location.state.data.totalSub).toFixed(2));
         setNote(location.state.note);
-        setList(location.state.data.dataPO)
-        setListPar(location.state.parsial)
+        setList(location.state.data.dataPO);
+        setListPar(location.state.parsial);
+        
         setIsLoading(false);
     }
 
@@ -190,7 +191,7 @@ export const PreviewPoPdf = () => {
                                 </View>
 
                                 <View style={{ width: '25mm', height: "25mm",marginLeft: '8mm' ,padding: 0}}>
-                                    <Image style={{width: '24mm', height:'24mm'}} src={`http://api.qrserver.com/v1/create-qr-code/?data=${nopo}`}/> 
+                                    <Image style={{width: '24mm', height:'24mm'}} src={`https://api.qrserver.com/v1/create-qr-code/?&data=${nopo}`}/>  
                                 </View>
                             </View>
                             <Text style={{fontSize: "8px"}}> </Text>
