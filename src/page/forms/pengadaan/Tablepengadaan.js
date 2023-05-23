@@ -1,13 +1,13 @@
 import React, { useMemo, useRef, useState, useEffect } from 'react';
 import './pengadaan.css';
 import Swal from "sweetalert2";
+import { useNavigate } from 'react-router-dom';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
-import { useNavigate } from 'react-router-dom';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 import { LoadingPage } from '../../../LoadingPage/LoadingPage';
-import { Breadcrumb, Card, Dropdown, DropdownButton, Form, InputGroup, Stack, Tab, Tabs } from 'react-bootstrap';
+import { Breadcrumb, Button, Card, Col, Dropdown, DropdownButton, Form, InputGroup, Modal, Row, Stack, Tab, Tabs } from 'react-bootstrap';
 import useAuthStore, { selectUser } from '../../../store/authLogin';
 import usePengadaanStore, {selectPengadaan, selectFetchPengadaan, selectPengadaanReady, selectFalsePengadaan} from '../../../store/pengadaanBarang';
 
@@ -53,7 +53,13 @@ export const Tablepengadaan = ({columns}) => {
     const [width, setWidth] = useState(window.innerWidth -200);
     const [height, setHeight] = useState(window.innerHeight-200);
     const containerStyle = useMemo(() => ({ Width: '100%', Height: '100%' }), []);
-    const [pilihPrint, setPilihPrint] = useState([])
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const [nilaiMin, setNilaiMin] = useState("");
+    const [nilaiMax, setNilaiMax] = useState("");
+    const [nilaiTanggal, setNilaiTanggal] = useState("");
 
     const arrDiv = ['FG', 'HR-GA', 'Maintenance', 'PPIC-WH', 'Produksi', 'Purchasing', 'QAQC', 'RnD', 'SSD'];
 
@@ -264,7 +270,6 @@ export const Tablepengadaan = ({columns}) => {
             setJmlRevisi(jumRevisi.length);
             setJmlVerify(jumVerify.length);
             setJmlSelesai(jumSelesai.length);
-            console.log(setPilihPrint)
             setIsLoading(false);
         } catch (error) {
         Swal.fire({
@@ -339,18 +344,22 @@ export const Tablepengadaan = ({columns}) => {
 
     const printChange = () => {
         if(userData.user_divisi === "Purchasing" || userData.user_divisi === "Develop"){
-            if(pilihPrint.length === 0){
-                Swal.fire({
-                    title: 'Oops...',
-                    icon: 'error',
-                    text: 'Harap Pilih Data Yang Akan Di Cetak',
-                })
-            }
-            else{
-                let path = `Preview`;
-                navigate(path, {state:{data: pilihPrint}})
-                
-            }
+
+            var newDate = new Date(bulan);
+            const month = newDate.getMonth() + 1;
+            const year = newDate.getFullYear();
+            const day = newDate.getDate();
+            const bb = String(month).padStart(2, '0');
+            const dd = String(day).padStart(2, '0');
+            const max = new Date(year, month, 0);
+            const dayMax = max.getDate();
+            const ddMax = String(dayMax).padStart(2, '0');
+            const nilaiMins = `${year}-${bb}-${dd}`;
+            const nilaiMaxs = `${year}-${bb}-${ddMax}`; 
+            setNilaiTanggal("");
+            setNilaiMin(nilaiMins);
+            setNilaiMax(nilaiMaxs);
+            handleShow();
         }
         else{
             Swal.fire({
@@ -358,10 +367,32 @@ export const Tablepengadaan = ({columns}) => {
                 title: 'Oops...',
                 text: 'Anda Tidak Memiliki Akses',
                 footer: 'Harap Hubungi Divisi Purchasing'
-              })
+            });
         }
         
         
+    }
+
+    const handlePrint = () =>{
+        if(nilaiTanggal === ""){
+            Swal.fire('Info','Harap pilih tanggal cetak pengadaan','warning');
+        }
+        else{
+            let xDate = new Date(nilaiTanggal);
+            let newPilih = xDate.toLocaleDateString("id-ID", {day: '2-digit', month: 'long', year: 'numeric'});
+            const data = newPengadaan.filter(x => x.user[0].divisi.toUpperCase() === key.toUpperCase() && x.t_pengadaan === newPilih);
+            const newData = data.filter(x => x.status.toUpperCase() === "SELESAI" || x.status.toUpperCase() === "VERIFIKASI");
+            if(newData.length === 0){
+                Swal.fire('Info',`Belum ada status data yang sudah terverifikasi atau selesai pada tanggal ${newPilih}`,'warning');
+            }
+            else{
+                console.log(newData)
+                navigate(`/main/${userData.user_divisi}/Pengadaan/Preview`,{state:{
+                    data : newData,
+                    tanggal : nilaiTanggal
+                  }});
+            }
+        }
     }
   return (
     <>
@@ -699,6 +730,37 @@ export const Tablepengadaan = ({columns}) => {
         
         </Tabs>
     </div>
+
+    <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
+        <Modal.Body>
+            <Form>
+                <Row className="mb-1">
+                    <Form.Group as={Col} controlId="validationCustom01">
+                        <Form.Label>Pilih Tanggal Cetak Pengadaan</Form.Label>
+                        <Form.Control
+                            required
+                            type="date"
+                            min={nilaiMin}
+                            max={nilaiMax}
+                            onChange={e =>setNilaiTanggal(e.target.value)}
+                        />
+                    </Form.Group>
+                </Row>
+            </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Batal
+          </Button>
+          <Button variant="primary" onClick={handlePrint}>Lanjut</Button>
+        </Modal.Footer>
+      </Modal>
 
     {isLoading ? <LoadingPage/> : ""}
     </>
