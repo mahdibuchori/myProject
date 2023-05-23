@@ -177,9 +177,9 @@ export const CetakPengadaan = () => {
     setImg([
       {
         pengesahan : "Tanda tangan",
-        diajukan : `http://api.qrserver.com/v1/create-qr-code/?data=${listData[0].user[0].pemohon}`,
-        disetujui : `http://api.qrserver.com/v1/create-qr-code/?data=Rusli Adna`,
-        register : `http://api.qrserver.com/v1/create-qr-code/?data=Endang Wahyu W`
+        diajukan : `https://api.qrserver.com/v1/create-qr-code/?data=${listData[0].user[0].pemohon}`,
+        disetujui : `https://api.qrserver.com/v1/create-qr-code/?data=Rusli Adna`,
+        register : `https://api.qrserver.com/v1/create-qr-code/?data=Endang Wahyu W`
       }
     ])
     console.log(iptData)
@@ -302,37 +302,6 @@ export const CetakPengadaan = () => {
                           </View>
                         
                         </View>
-                        // console.log(row.stok)
-                        // console.log(row.order)
-                        // console.log(row.t_terima)
-                        // console.log(row.keterangan)
-                          /* <View key={i} style={styles.row} wrap={true}>
-                            <View style={[styles.row1, {borderBottom:'none'}]}>
-                              <Text style={{padding: 2, textAlign: 'center'}}>{i+1}</Text>
-                            </View>
-                            <View style={[styles.row2, {borderBottom:'none'}]}>
-                              <Text style={{padding: 3, textAlign: 'left'}}>{row.material[0].material}</Text>
-                            </View>
-                            <View style={[styles.row3, {borderBottom:'none'}]}>
-                              <Text style={{padding: 2, textAlign: 'center'}}>{row.qty_pengadaan[0].stock}</Text>
-                            </View>
-                            <View style={[styles.row3, {borderBottom:'none'}]}>
-                              <Text style={{padding: 2, textAlign: 'center'}}>{row.qty_pengadaan[0].order}</Text>
-                            </View>
-                            <View style={[styles.row3, {borderBottom:'none'}]}>
-                              <Text style={{padding: 2, textAlign: 'center'}}>{formatInTimeZone(new Date( row.t_terima ), 'Asia/Jakarta', 'dd/MM/yyyy', { locale: id })}</Text>
-                            </View>
-                            <View style={[styles.row3, {borderBottom:'none'}]}>
-                              <Text style={{padding: 2, textAlign: 'left'}}>{}</Text>  
-                            </View>
-                            <View style={[styles.row4, {borderBottom:'none'}]}>
-                              <Text style={{padding: 2, textAlign: 'left'}}>{}</Text>
-                            </View>
-                            <View style={[styles.row2, {borderBottom:'none'}]}>
-                              <Text style={{padding: 2, textAlign: 'left'}}>{row.keterangan}</Text>
-                            </View>
-                            
-                          </View> */
                       )
 
                     })}
