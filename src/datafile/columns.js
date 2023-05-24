@@ -1,6 +1,7 @@
 import { BtnStok } from '../page/forms/datastok/BtnStok';
 import { BtnProvider } from '../page/forms/eksternalProvider/BtnProvider';
 import { BtnPengadaan } from '../page/forms/pengadaan/BtnPengadaan';
+import { BtnSparepart } from '../page/forms/sparepart/BtnSparepart';
 
 export const COLUMNS_GUDANG =[
     {
@@ -202,6 +203,108 @@ export const COLUMNS_PENGADAAN =[
         field : 'Action',
         headerName: 'Action',
         cellRenderer: BtnPengadaan,
+          cellRendererParams: {
+            clicked: function (field) {
+              alert(`${field} was clicked`);
+            },
+          },
+        width: 150,
+        pinned: 'right'
+    }
+]
+
+export const COLUMNS_SPAREPART =[
+    {
+        headerName: 'Item',
+        field : 'nama_item',
+        width: 250,
+        maxwidth:375,
+        suppressSizeToFit: true,
+        pinned: 'left',
+        filter: 'agTextColumnFilter',
+        headerCheckboxSelection: true,
+        checkboxSelection: true,
+        showDisabledCheckboxes: true,
+    },
+    {
+        headerName: 'Unit',
+        field : 'unit',
+        width: 95,
+        maxwidth:105,
+    },
+    {
+        headerName: 'Stok',
+        field : 'stok',
+        width: 95,
+        maxwidth:155,
+    },
+    {
+        headerName: 'Pengeluaran Akhir',
+        field : 'pengeluaran',
+        width: 115,
+        maxwidth:155,
+    },
+    {
+        headerName: 'Tgl Keluar',
+        field : 'tgl_keluar',
+        width: 115,
+        maxwidth:155,
+    },
+    {
+        headerName: 'Buffer',
+        field : 'buffer',
+        width: 100,
+        maxwidth:115,
+    },
+    {
+        headerName: 'Maksimal Stok',
+        field : 'maks_Stok',
+        width: 100,
+        maxwidth:115,
+    },
+    {
+        headerName: 'Status',
+        field : 'status_item',
+        width: 105,
+        cellStyle: function(params) {
+            console.log(params.value)
+            if (params.value ==='STOCK LIMIT') {
+                return {color: '#800000', backgroundColor: '#d07979a7', borderRadius: '8px', height: 30, lineHeight: 2, marginTop: '5px',textAlign: 'center'};
+                
+            }
+            else if (params.value ==='PENGAJUAN') {
+                return {color: '#918413', backgroundColor: '#e7d32260', borderRadius: '8px', height: 30, lineHeight: 2, marginTop: '5px',textAlign: 'center'};
+            }
+            else if (params.value ==='ORDER') {
+                return {color: '#120cce', backgroundColor: '#120cce60', borderRadius: '8px', height: 30, lineHeight: 2, marginTop: '5px',textAlign: 'center'};
+            }
+            else if (params.value ==='AMAN') {
+                return {color: '#008011', backgroundColor: '#38cc4c73', borderRadius: '8px', height: 30, lineHeight: 2, marginTop: '5px',textAlign: 'center'};
+            }
+            else if (params.value ==='TIDAK AKTIF') {
+                return {color: '#7a0080', backgroundColor: '#a35ea6c4', borderRadius: '8px', height: 30, lineHeight: 2, marginTop: '5px',textAlign: 'center'};
+            }
+            else {
+                return null;
+            }
+        }
+    },
+    {
+        headerName: 'Tgl Pengajuan',
+        field : 'tgl_pengajuan',
+        width: 130,
+        maxwidth:155,
+    },
+    {
+        headerName: 'Tgl Order',
+        field : 'tgl_order',
+        width: 130,
+        maxwidth:155,
+    },
+    {
+        field : 'Action',
+        headerName: 'Action',
+        cellRenderer: BtnSparepart,
           cellRendererParams: {
             clicked: function (field) {
               alert(`${field} was clicked`);

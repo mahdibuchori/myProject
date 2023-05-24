@@ -30,6 +30,11 @@ import { CreatePo } from '../../page/forms/purchaseorder/CreatePo';
 import { DataPo } from '../../page/forms/purchaseorder/DataPo';
 import { PreviewPoPdf } from '../../page/forms/purchaseorder/PreviewPoPdf';
 import { ListPo } from '../../page/forms/purchaseorder/ListPo';
+import { DataSparepart } from '../../page/forms/sparepart/DataSparepart';
+import { PengajuanPart } from '../../page/forms/sparepart/PengajuanPart';
+import { UpdateOrder } from '../../page/forms/sparepart/UpdateOrder';
+import { OrderPart } from '../../page/forms/sparepart/OrderPart';
+import { AddPart } from '../../page/forms/sparepart/AddPart';
 export const MenuBar = ({setAuth}) => {
 
   const userData = useAuthStore(selectUser);
@@ -88,6 +93,14 @@ export const MenuBar = ({setAuth}) => {
                     <Route exact path={"/"+divisi+"/Purchasing"} element={<ListPo />} />
                     <Route exact path={"/"+divisi+"/Purchasing/Data"} element={<DataPo />} />
                     <Route exact path={"/"+divisi+"/Purchasing/PreviewPO"} element={<PreviewPoPdf />} />
+
+                    {/* Sparepart */}
+                    <Route exact path={"/"+divisi+"/Sparepart"} element={<DataSparepart />} />
+                    <Route exact path={"/"+divisi+"/Sparepart/CreatePart"} element={<AddPart />} />
+                    <Route exact path={"/"+divisi+"/Sparepart/OrderPart"} element={<OrderPart />} />
+                    <Route exact path={"/"+divisi+"/Sparepart/UpdateOrderPart"} element={<UpdateOrder />} />
+                    <Route exact path={"/"+divisi+"/Sparepart/CretePengadaan"} element={<PengajuanPart />} /> 
+                    {/* */}
 
                 </Routes>
             </div>

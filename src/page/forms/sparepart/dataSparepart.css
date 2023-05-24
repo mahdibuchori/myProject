@@ -1,0 +1,15 @@
+.dataspare{
+    flex: 5;
+    margin: 50px 5px 5px 5px;
+    padding: 5px 5px 5px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dataspare-item-top {
+    display: flex;
+    background-color: #f1f1f1;
+    text-align: left;
+    height: 40px;
+    justify-content: space-between;
+}
