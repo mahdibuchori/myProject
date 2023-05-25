@@ -2,6 +2,7 @@ import { BtnStok } from '../page/forms/datastok/BtnStok';
 import { BtnProvider } from '../page/forms/eksternalProvider/BtnProvider';
 import { BtnPengadaan } from '../page/forms/pengadaan/BtnPengadaan';
 import { BtnSparepart } from '../page/forms/sparepart/BtnSparepart';
+import { BtnBom } from '../page/forms/bom/BtnBom';
 
 export const COLUMNS_GUDANG =[
     {
@@ -311,6 +312,53 @@ export const COLUMNS_SPAREPART =[
             },
           },
         width: 150,
+        pinned: 'right'
+    }
+]
+
+export const COLUMNS_BOM =[
+    {
+        headerName: 'ID',
+        field : 'id_bom',
+        width: 120,
+        suppressSizeToFit: true,
+        filter: 'agTextColumnFilter',
+    },
+    {
+        headerName: 'No BOM',
+        width: 100,
+        maxwidth:350,
+        field : 'no_bom',
+    },
+    {
+        headerName: 'No. Item',
+        field : 'id_item',
+        width: 80,
+        maxwidth:175,
+    },
+    {
+        headerName: 'Deskripsi Item',
+        field : 'deskripsi_item',
+        width: 500,
+        maxwidth:755,
+    },
+    {
+        headerName: 'Varian',
+        field : 'varian',
+        width: 100,
+        maxwidth:255,
+    },
+    {
+        headerName: 'Revisi',
+        field : 'revisi',
+        width: 100,
+        maxwidth:255,
+    },
+    {
+        field : '',
+        headerName: 'Action',
+        cellRenderer: BtnBom,
+        width: 120,
         pinned: 'right'
     }
 ]

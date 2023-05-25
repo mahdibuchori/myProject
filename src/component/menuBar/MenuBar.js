@@ -35,6 +35,9 @@ import { PengajuanPart } from '../../page/forms/sparepart/PengajuanPart';
 import { UpdateOrder } from '../../page/forms/sparepart/UpdateOrder';
 import { OrderPart } from '../../page/forms/sparepart/OrderPart';
 import { AddPart } from '../../page/forms/sparepart/AddPart';
+import { DataBom } from '../../page/forms/bom/DataBom';
+import { InputBom } from '../../page/forms/bom/InputBom';
+import { EditBom } from '../../page/forms/bom/EditBom';
 export const MenuBar = ({setAuth}) => {
 
   const userData = useAuthStore(selectUser);
@@ -101,6 +104,11 @@ export const MenuBar = ({setAuth}) => {
                     <Route exact path={"/"+divisi+"/Sparepart/UpdateOrderPart"} element={<UpdateOrder />} />
                     <Route exact path={"/"+divisi+"/Sparepart/CretePengadaan"} element={<PengajuanPart />} /> 
                     {/* */}
+
+                    {/*BOM */}
+                    <Route exact path={"/"+divisi+"/BOM"} element={<DataBom />} />
+                    <Route exact path={"/"+divisi+"/BOM/Create"} element={<InputBom />} />
+                    <Route exact path={"/"+divisi+"/BOM/Edit"} element={<EditBom />} />
 
                 </Routes>
             </div>
