@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import QrReader from 'react-qr-scanner';
+import { QrScanner } from '@yudiel/react-qr-scanner';
 import './formProses.css';
 import Swal from "sweetalert2";
 import Select from 'react-select';
@@ -525,15 +525,15 @@ export const CreateFormproses = () => {
             </Modal.Header>
             <Modal.Body>
                 <select onChange={(e) => setSelected(e.target.value)}>
-                    <option value={'rear'}>Back Camera</option>
-                    <option value={'front'}>Front Camera</option>
+                    <option value={'environment'}>Back Camera</option>
+                    <option value={'user'}>Front Camera</option>
                 </select>
-                <QrReader
+                <QrScanner
+                    onDecode={(result) => handleScan(result)}
+                    onError={(error) => handleError(error?.message)}
+                    constraints={{ facingMode: selected }}
                     delay={1000}
-                    onError={handleError}
-                    onScan={handleScan}
-                    style={{ width: '300px' }}
-                    facingMode ={selected}
+                    style={{ width: '100px' }}
                 />
             </Modal.Body>
         </Modal>
