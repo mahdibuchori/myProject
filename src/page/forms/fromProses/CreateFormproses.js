@@ -24,8 +24,7 @@ export const CreateFormproses = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [dataReady, setDataReady] = useState(false);
     const [show, setShow] = useState(false);
-    const [swaping, setSwaping] = useState(false);
-    const [selected, setSelected] = useState("environment");
+    const [selected, setSelected] = useState("rear");
     const [pengajuan, setPengajuan] = useState("");
     const [kode, setKode] = useState('');
     const [provider, setProvider] = useState([]);
