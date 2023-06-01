@@ -525,36 +525,16 @@ export const CreateFormproses = () => {
             <Modal.Title>Arahkan Kamera ke Qrcode</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {/* <select onChange={(e) => setSelected(e.target.value)}>
-                    <option value={"environment"}>Back Camera</option>
-                    <option value={"user"}>Front Camera</option>
-                </select> */}
-                <div style={{display: 'flex', justifyContent:'flex-end', width: '100'}}>
-                {swaping ?
-                    <Button 
-                        variant="outline-primary"
-                        onClick={(e)=> setSwaping(false)}
-                        onChange={(e) => setSelected("rear")}
-                        >
-                        <i className="bi bi-arrow-clockwise"></i>
-                        </Button>
-                :
-                    <Button 
-                        variant="outline-danger"
-                        onClick={(e)=> setSwaping(true)}
-                        onChange={(e) => setSelected("front")}
-                        >
-                        <i className="bi bi-arrow-counterclockwise"></i>
-                        </Button>
-                }
-                </div>
-                
+                <select onChange={(e) => setSelected(e.target.value)}>
+                    <option value={'rear'}>Back Camera</option>
+                    <option value={'front'}>Front Camera</option>
+                </select>
                 <QrReader
-                    delay={300}
+                    delay={1000}
                     onError={handleError}
                     onScan={handleScan}
-                    style={{ width: "100%" }}
-                    facingMode={selected}
+                    style={{ width: '300px' }}
+                    facingMode ={selected}
                 />
             </Modal.Body>
         </Modal>
