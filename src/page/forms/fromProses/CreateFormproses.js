@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import QrReader from 'react-qr-scanner'
+import QrReader from 'react-qr-scanner';
 import './formProses.css';
 import Swal from "sweetalert2";
 import Select from 'react-select';
@@ -554,8 +554,11 @@ export const CreateFormproses = () => {
                     onError={handleError}
                     onScan={handleScan}
                     style={{ width: "100%" }}
-                    facingMode={selected}
+                    // facingMode={selected}
                     width={100}
+                    constraints={{
+                        facingMode: `${selected}`,
+                      }}
                 />
             </Modal.Body>
         </Modal>
