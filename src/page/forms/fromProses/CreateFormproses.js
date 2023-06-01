@@ -112,17 +112,15 @@ export const CreateFormproses = () => {
     const handleShow = () => setShow(true);
 
     const  handleScan = (data) => {
-        
+        console.log(data);
         if (data) {
-        //   setResult(data);
-        console.log(data.text);
         if(data.text === ""){
             handleClose()
             Swal.fire('Oppss..','Data tidak ditemukan','warning');
         }
         else{
             handleClose()
-            Swal.fire('Info',`Data ditemukan ${data.text}`,'warning');
+            Swal.fire('Info',`Data ditemukan ${data}`,'warning');
         }
         }
     };
