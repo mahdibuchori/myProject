@@ -50,7 +50,7 @@ export const MenuProduksi = () => {
                     </Col>
                 </Link>
           
-                <Link to="" className='link'>
+                <Link to={`/main/${divisi}/Permintaan`} className='link'>
                     <Col>
                     <Card className="text-center">
                         <span className='icon'><i className="bi bi-box-seam"></i></span>

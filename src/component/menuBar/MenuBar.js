@@ -38,6 +38,12 @@ import { AddPart } from '../../page/forms/sparepart/AddPart';
 import { DataBom } from '../../page/forms/bom/DataBom';
 import { InputBom } from '../../page/forms/bom/InputBom';
 import { EditBom } from '../../page/forms/bom/EditBom';
+import { FormPermintaan } from '../../page/forms/permintaan/FormPermintaan';
+import { InputPermintaan } from '../../page/forms/permintaan/InputPermintaan';
+import { UpdatePermmintaan } from '../../page/forms/permintaan/UpdatePermmintaan';
+import { ViewPermintaan } from '../../page/forms/permintaan/ViewPermintaan';
+import { CreateFormproses } from '../../page/forms/fromProses/CreateFormproses';
+
 export const MenuBar = ({setAuth}) => {
 
   const userData = useAuthStore(selectUser);
@@ -110,6 +116,15 @@ export const MenuBar = ({setAuth}) => {
                     <Route exact path={"/"+divisi+"/BOM/Create"} element={<InputBom />} />
                     <Route exact path={"/"+divisi+"/BOM/Edit"} element={<EditBom />} />
 
+                    {/* Permintaan */}
+                    <Route exact path={"/"+divisi+"/Permintaan"} element={<FormPermintaan />} />
+                    <Route exact path={"/"+divisi+"/Permintaan/Create"} element={<InputPermintaan />} />
+                    <Route exact path={"/"+divisi+"/Permintaan/Update"} element={<UpdatePermmintaan />} />
+                    <Route exact path={"/"+divisi+"/Permintaan/View"} element={<ViewPermintaan />} />
+
+                    {/* Form Proses */}
+                    <Route exact path={"/"+divisi+"/FormProses/Create"} element={<CreateFormproses />} />
+                    {/* <Route exact path={"/"+divisi+"/FormProses/Update"} element={<UpdateFormproses />} /> */}
                 </Routes>
             </div>
         </div>

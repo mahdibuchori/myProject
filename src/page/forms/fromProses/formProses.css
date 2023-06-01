@@ -1,0 +1,20 @@
+.formprosesSet{
+    flex: 5;
+    margin: 50px 5px 5px 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formprosesSet-item-top {
+    display: flex;
+    background-color: #f1f1f1;
+    text-align: right;
+    height: 40px;
+    justify-content: space-between;
+}
+
+.box-fp{
+    box-shadow: 0px 0px 7px 0px rgba(133, 188, 255),
+    0px 0px 16px -3px rgba(133, 188, 255),
+    0px 4px 15px -16px rgba(133, 188, 255);
+}

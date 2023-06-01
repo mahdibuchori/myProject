@@ -1,8 +1,9 @@
+import { BtnBom } from '../page/forms/bom/BtnBom';
 import { BtnStok } from '../page/forms/datastok/BtnStok';
-import { BtnProvider } from '../page/forms/eksternalProvider/BtnProvider';
 import { BtnPengadaan } from '../page/forms/pengadaan/BtnPengadaan';
 import { BtnSparepart } from '../page/forms/sparepart/BtnSparepart';
-import { BtnBom } from '../page/forms/bom/BtnBom';
+import { BtnPermintaan } from '../page/forms/permintaan/BtnPermintaan';
+import { BtnProvider } from '../page/forms/eksternalProvider/BtnProvider';
 
 export const COLUMNS_GUDANG =[
     {
@@ -21,25 +22,25 @@ export const COLUMNS_GUDANG =[
         headerName: 'S_Awal',
         field : 'saldo_awal',
         width: 100,
-        maxwidth:175,
+        maxWidth:175,
     },
     {
         headerName: 'S_Akhir',
         field : 'saldo_akhir',
         width: 100,
-        maxwidth:175,
+        maxWidth:175,
     },
     {
         headerName: 'Rtrn Prod',
         field : 'ret_prod',
         width: 150,
-        maxwidth:255,
+        maxWidth:255,
     },
     {
         headerName: 'Permintaan Prod',
         field : 'perm_prod',
         width: 150,
-        maxwidth:255,
+        maxWidth:255,
     },
     {
         headerName: 'Status',
@@ -87,20 +88,20 @@ export const COLUMNS_PROVIDER =[
     {
         headerName: 'Nama Pemasok',
         width: 200,
-        maxwidth:350,
+        maxWidth:350,
         field : 'nama_provider',
     },
     {
         headerName: 'Telephon',
         field : 'tlp_provider',
         width: 150,
-        maxwidth:175,
+        maxWidth:175,
     },
     {
         headerName: 'Alamat',
         field : 'almt_provider',
         width: 500,
-        maxwidth:755,
+        maxWidth:755,
     },
     {
         field : '',
@@ -116,7 +117,7 @@ export const COLUMNS_PENGADAAN =[
         headerName: 'ID',
         field : 'id_Pengadaan',
         width: 120,
-        maxwidth:155,
+        maxWidth:155,
         suppressSizeToFit: true,
         pinned: 'left',
         filter: 'agTextColumnFilter',
@@ -131,14 +132,14 @@ export const COLUMNS_PENGADAAN =[
             return nilai;
         },
         width: 105,
-        maxwidth:155,
+        maxWidth:155,
         pinned: 'left'
     },
     {
         headerName: 'Tanggal',
         field : 't_pengadaan',
         width: 110,
-        maxwidth:115,
+        maxWidth:115,
     },
     {
         field : 'material',
@@ -155,7 +156,7 @@ export const COLUMNS_PENGADAAN =[
             return nilai;
         },
         width: 90,
-        maxwidth:105,
+        maxWidth:105,
     },
     {
         headerName: 'Unit',
@@ -165,12 +166,12 @@ export const COLUMNS_PENGADAAN =[
             return nilai;
         },
         width: 80,
-        maxwidth:95,
+        maxWidth:95,
     },
     {
         field : 'status',
         width: 100,
-        maxwidth:115,
+        maxWidth:115,
         cellClassRules: {
             "rag-green": "x < 20",
             "rag-amber": "x >= 20 && x < 25",
@@ -198,7 +199,7 @@ export const COLUMNS_PENGADAAN =[
     {
         field : 'keterangan',
         minwidth:200,
-        maxwidth: 450
+        maxWidth: 450
     },
     {
         field : 'Action',
@@ -219,7 +220,7 @@ export const COLUMNS_SPAREPART =[
         headerName: 'Item',
         field : 'nama_item',
         width: 250,
-        maxwidth:375,
+        maxWidth:375,
         suppressSizeToFit: true,
         pinned: 'left',
         filter: 'agTextColumnFilter',
@@ -231,37 +232,37 @@ export const COLUMNS_SPAREPART =[
         headerName: 'Unit',
         field : 'unit',
         width: 95,
-        maxwidth:105,
+        maxWidth:105,
     },
     {
         headerName: 'Stok',
         field : 'stok',
         width: 95,
-        maxwidth:155,
+        maxWidth:155,
     },
     {
         headerName: 'Pengeluaran Akhir',
         field : 'pengeluaran',
         width: 115,
-        maxwidth:155,
+        maxWidth:155,
     },
     {
         headerName: 'Tgl Keluar',
         field : 'tgl_keluar',
         width: 115,
-        maxwidth:155,
+        maxWidth:155,
     },
     {
         headerName: 'Buffer',
         field : 'buffer',
         width: 100,
-        maxwidth:115,
+        maxWidth:115,
     },
     {
         headerName: 'Maksimal Stok',
         field : 'maks_Stok',
         width: 100,
-        maxwidth:115,
+        maxWidth:115,
     },
     {
         headerName: 'Status',
@@ -294,13 +295,13 @@ export const COLUMNS_SPAREPART =[
         headerName: 'Tgl Pengajuan',
         field : 'tgl_pengajuan',
         width: 130,
-        maxwidth:155,
+        maxWidth:155,
     },
     {
         headerName: 'Tgl Order',
         field : 'tgl_order',
         width: 130,
-        maxwidth:155,
+        maxWidth:155,
     },
     {
         field : 'Action',
@@ -327,38 +328,151 @@ export const COLUMNS_BOM =[
     {
         headerName: 'No BOM',
         width: 100,
-        maxwidth:350,
+        maxWidth:350,
         field : 'no_bom',
     },
     {
         headerName: 'No. Item',
         field : 'id_item',
         width: 80,
-        maxwidth:175,
+        maxWidth:175,
     },
     {
         headerName: 'Deskripsi Item',
         field : 'deskripsi_item',
         width: 500,
-        maxwidth:755,
+        maxWidth:755,
     },
     {
         headerName: 'Varian',
         field : 'varian',
         width: 100,
-        maxwidth:255,
+        maxWidth:255,
     },
     {
         headerName: 'Revisi',
         field : 'revisi',
         width: 100,
-        maxwidth:255,
+        maxWidth:255,
     },
     {
         field : '',
         headerName: 'Action',
         cellRenderer: BtnBom,
         width: 120,
+        pinned: 'right'
+    }
+]
+
+export const COLUMNS_PERMINTAAN =[
+    {
+        headerName: 'Item',
+        field : 'nama_item',
+        width: 150,
+        maxWidth:175,
+        suppressSizeToFit: true,
+        pinned: 'left',
+        filter: 'agTextColumnFilter',
+    },
+    {
+        headerName: 'Estimasi',
+        field : 'jmlEstimasi',
+        valueGetter: params => {
+            let nilai  = (parseFloat(params.data.jml_item[0].jmlEstimasi)*1000)/1000;
+            return nilai;
+        },
+        width: 105,
+        maxWidth:155,
+        cellStyle: function(params) {
+            return {textAlign: 'right',fontWeight: "bold"};
+        }
+    },
+    {
+        headerName: 'Permintaan',
+        field : 'JmlPermintaan',
+        valueGetter: params => {
+            let nilaiPermint  = (parseFloat(params.data.jml_item[0].JmlPermintaan)*1000)/1000;
+            return nilaiPermint;
+        },
+        width: 125,
+        maxWidth:155,
+        cellStyle: function(params) {
+            return {textAlign: 'right',fontWeight: "bold"};
+        }
+    },
+    {
+        headerName: 'Pengeluaran',
+        field : 'JmlPengeluaran',
+        valueGetter: params => {
+            let nilaiKeluar  = (parseFloat(params.data.jml_item[0].JmlPengeluaran)*1000)/1000;
+            return nilaiKeluar;
+        },
+        width: 135,
+        maxWidth:155,
+        cellStyle: function(params) {
+            return {textAlign: 'right',fontWeight: "bold"};
+        }
+    },
+    {
+        headerName: 'satuan',
+        field : 'satuan',
+        width: 100,
+        maxWidth:115,
+    },
+    {
+        headerName: 'Status Item',
+        field : 'status_item',
+        width: 105,
+        cellStyle: function(params) {
+            if (params.value ==='Pengajuan') {
+                return {color: '#800000', backgroundColor: '#d07979a7', borderRadius: '8px', height: 30, lineHeight: 2, marginTop: '5px',textAlign: 'center',fontWeight: "bold"};
+                
+            }
+            else if (params.value ==='Progress') {
+                return {color: '#918413', backgroundColor: '#e7d32260', borderRadius: '8px', height: 30, lineHeight: 2, marginTop: '5px',textAlign: 'center',fontWeight: "bold"};
+            }
+            else if (params.value ==='Verify') {
+                return {color: '#120cce', backgroundColor: '#120cce60', borderRadius: '8px', height: 30, lineHeight: 2, marginTop: '5px',textAlign: 'center',fontWeight: "bold"};
+            }
+            else if (params.value ==='Selesai') {
+                return {color: '#008011', backgroundColor: '#38cc4c73', borderRadius: '8px', height: 30, lineHeight: 2, marginTop: '5px',textAlign: 'center',fontWeight: "bold"};
+            }
+            else if (params.value ==='Revisi') {
+                return {color: '#7a0080', backgroundColor: '#a35ea6c4', borderRadius: '8px', height: 30, lineHeight: 2, marginTop: '5px',textAlign: 'center',fontWeight: "bold"};
+            }
+            else {
+                return null;
+            }
+        }
+    },
+    {
+        headerName: 'Waktu Kirim',
+        field : 'Waktu Kirim',
+        width: 130,
+        maxWidth:155,
+        valueGetter: params => {
+            return params.data.waktu[0].jamPengiriman;
+        },
+        cellStyle: function(params) {
+            return {textAlign: 'center',fontWeight: "bold"};
+        }
+    },
+    {
+        headerName: 'List',
+        field : 'list_data',
+        width: 300,
+        maxWidth:405,
+    },
+    {
+        field : 'Action',
+        headerName: 'Action',
+        cellRenderer: BtnPermintaan,
+          cellRendererParams: {
+            clicked: function (field) {
+              alert(`${field} was clicked`);
+            },
+          },
+        width: 160,
         pinned: 'right'
     }
 ]
