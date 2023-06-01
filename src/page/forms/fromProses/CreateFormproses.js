@@ -534,7 +534,7 @@ export const CreateFormproses = () => {
                     <Button 
                         variant="outline-primary"
                         onClick={(e)=> setSwaping(false)}
-                        onChange={(e) => setSelected("environment")}
+                        onChange={(e) => setSelected("rear")}
                         >
                         <i className="bi bi-arrow-clockwise"></i>
                         </Button>
@@ -542,7 +542,7 @@ export const CreateFormproses = () => {
                     <Button 
                         variant="outline-danger"
                         onClick={(e)=> setSwaping(true)}
-                        onChange={(e) => setSelected("user")}
+                        onChange={(e) => setSelected("front")}
                         >
                         <i className="bi bi-arrow-counterclockwise"></i>
                         </Button>
@@ -554,11 +554,7 @@ export const CreateFormproses = () => {
                     onError={handleError}
                     onScan={handleScan}
                     style={{ width: "100%" }}
-                    // facingMode={selected}
-                    width={100}
-                    constraints={{
-                        facingMode: `${selected}`,
-                      }}
+                    facingMode={selected}
                 />
             </Modal.Body>
         </Modal>
