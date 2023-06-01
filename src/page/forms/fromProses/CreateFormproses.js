@@ -24,7 +24,8 @@ export const CreateFormproses = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [dataReady, setDataReady] = useState(false);
     const [show, setShow] = useState(false);
-    const [selected, setSelected] = useState("rear");
+    const [swaping, setSwaping] = useState(false);
+    const [selected, setSelected] = useState("user");
     const [pengajuan, setPengajuan] = useState("");
     const [kode, setKode] = useState('');
     const [provider, setProvider] = useState([]);
@@ -526,6 +527,29 @@ export const CreateFormproses = () => {
                     <option value={'environment'}>Back Camera</option>
                     <option value={'user'}>Front Camera</option>
                 </select>
+                <div style={{display: 'flex', justifyContent:'flex-end', width: '100'}}>
+                {swaping ?
+                    <Button 
+                        variant="outline-primary"
+                        onClick={(e)=> {
+                                    setSwaping(false)
+                                    setSelected("user")
+                                }}
+                        >
+                        <i className="bi bi-arrow-clockwise"></i>
+                        </Button>
+                :
+                    <Button 
+                        variant="outline-danger"
+                        onClick={(e)=> {
+                            setSwaping(false)
+                            setSelected("environment")
+                        }}
+                        >
+                        <i className="bi bi-arrow-counterclockwise"></i>
+                        </Button>
+                }
+                </div>
                 <QrScanner
                     onDecode={(result) => handleScan(result)}
                     onError={(error) => handleError(error?.message)}
