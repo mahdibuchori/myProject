@@ -2,7 +2,7 @@ import { BtnBom } from '../page/forms/bom/BtnBom';
 import { BtnStok } from '../page/forms/datastok/BtnStok';
 import { BtnPengadaan } from '../page/forms/pengadaan/BtnPengadaan';
 import { BtnSparepart } from '../page/forms/sparepart/BtnSparepart';
-import { BtnPermintaan } from '../page/forms/permintaan/BtnPermintaan';
+// import { BtnPermintaan } from '../page/forms/permintaan/BtnPermintaan';
 import { BtnProvider } from '../page/forms/eksternalProvider/BtnProvider';
 
 export const COLUMNS_GUDANG =[
@@ -364,7 +364,7 @@ export const COLUMNS_BOM =[
     }
 ]
 
-export const COLUMNS_PERMINTAAN =[
+/* export const COLUMNS_PERMINTAAN =[
     {
         headerName: 'Item',
         field : 'nama_item',
@@ -475,4 +475,4 @@ export const COLUMNS_PERMINTAAN =[
         width: 160,
         pinned: 'right'
     }
-]
+] */
