@@ -248,7 +248,7 @@ export const TablePermintaan = () => {
                 className="mb-3"
                 >
                 <Tab eventKey="Inggredient" title="Inggredient">
-                    <div style={{width: width, height: height, padding: "0px 10px 0px 10px"}} className="ag-theme-alpine">
+                    <div style={{width: `${width}`, height: height, padding: "0px 10px 0px 10px"}} className="ag-theme-alpine">
                         <AgGridReact
                             ref={gridRef}
                             rowData={rowInggredient}

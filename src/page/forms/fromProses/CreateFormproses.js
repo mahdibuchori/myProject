@@ -24,7 +24,8 @@ export const CreateFormproses = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [dataReady, setDataReady] = useState(false);
     const [show, setShow] = useState(false);
-
+    const [swaping, setSwaping] = useState(false);
+    const [selected, setSelected] = useState("environment");
     const [pengajuan, setPengajuan] = useState("");
     const [kode, setKode] = useState('');
     const [provider, setProvider] = useState([]);
@@ -524,12 +525,37 @@ export const CreateFormproses = () => {
             <Modal.Title>Arahkan Kamera ke Qrcode</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+                {/* <select onChange={(e) => setSelected(e.target.value)}>
+                    <option value={"environment"}>Back Camera</option>
+                    <option value={"user"}>Front Camera</option>
+                </select> */}
+                <div style={{display: 'flex', justifyContent:'flex-end', width: '100'}}>
+                {swaping ?
+                    <Button 
+                        variant="outline-primary"
+                        onClick={(e)=> setSwaping(false)}
+                        onChange={(e) => setSelected("environment")}
+                        >
+                        <i className="bi bi-arrow-clockwise"></i>
+                        </Button>
+                :
+                    <Button 
+                        variant="outline-danger"
+                        onClick={(e)=> setSwaping(true)}
+                        onChange={(e) => setSelected("user")}
+                        >
+                        <i className="bi bi-arrow-counterclockwise"></i>
+                        </Button>
+                }
+                </div>
+                
                 <QrReader
                     delay={300}
                     onError={handleError}
                     onScan={handleScan}
                     style={{ width: "100%" }}
-                    facingMode="environment"
+                    facingMode={selected}
+                    width={100}
                 />
             </Modal.Body>
         </Modal>
