@@ -132,7 +132,6 @@ export const CreateFormproses = () => {
     };
 
     const cekData = () =>{
-        console.log(location.state.data);
         let nPengajuan = 0;
         if(location.state.data.jml_item[0]?.JmlPermintaan === null || location.state.data.jml_item[0]?.JmlPermintaan === 0){
             nPengajuan = 0;
@@ -155,6 +154,7 @@ export const CreateFormproses = () => {
             return { value: element.nama_provider, label: element.nama_provider, id_provider: element.id_provider, nilai_tukar : element.nilai_tukar, syarat_bayar : element.syarat_bayar };
         });
         setProvider(modifiedArr);
+        setIsLoading(false);
     }
 
     const handleSave = () =>{
