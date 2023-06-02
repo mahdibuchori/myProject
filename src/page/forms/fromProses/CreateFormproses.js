@@ -213,81 +213,135 @@ export const CreateFormproses = () => {
                     <Form>
                     <Row className='mt-2'>
                         <div className="col-md-3 mb-1">
-                            <Card className='mb-2'>
-                                <Card.Body>
-                                    <div className="row">
-                                        <Form.Group as={Col} controlId="validationCustom01">
-                                            <Form.Label>Id Form Proses</Form.Label>
-                                            <Form.Control
-                                                type="text"
-                                                value={kode}
-                                                disabled
-                                            />
-                                        </Form.Group>
-                                    </div>
-                                    <div className="row">
-                                        <Form.Group as={Col} controlId="validationCustom01">
-                                            <Form.Label>Nama Item</Form.Label>
-                                            <Form.Control 
-                                                as="textarea" 
-                                                aria-label="With textarea" 
-                                                rows={1}
-                                                value = {location.state.data.nama_item}
-                                                // onChange = {e => setNamaBarang(e.target.value)}
-                                                disabled
-                                            />
-                                        </Form.Group>
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                            <Card className='mb-2'>
-                                <Card.Body>
-                                    <div className="row">
-                                        <Form.Group as={Col} controlId="validationCustom01">
-                                            <Form.Label>Qty Permintaan</Form.Label>
-                                            <InputGroup>
-                                                <NumericFormat 
-                                                    customInput={Form.Control}
-                                                    thousandSeparator={true}
-                                                    value={pengajuan}
+                            <Accordion defaultActiveKey={['0','1']} alwaysOpen>
+                                <Accordion.Item eventKey="0" className='mb-2 box-fp'>
+                                    <Accordion.Header>Item</Accordion.Header>
+                                    <Accordion.Body>
+                                        <div className="row">
+                                            <Form.Group as={Col} controlId="validationCustom01">
+                                                <Form.Label>Id Form Proses</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    value={kode}
                                                     disabled
                                                 />
-                                                <InputGroup.Text id="basic-addon2">{location.state.data.satuan}</InputGroup.Text>
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </div>
-                                    <div className="row">
-                                        <Form.Group as={Col} controlId="validationCustom01">
-                                            <Form.Label>Qty Item /Bag</Form.Label>
-                                            <InputGroup>
-                                                <NumericFormat 
-                                                    customInput={Form.Control}
-                                                    thousandSeparator={true}
-                                                    onChange={(e)=>{
-                                                        setQtyBag(e.target.value);
-                                                        setDataReady(true)
-                                                    }}
-                                                />
-                                                <InputGroup.Text id="basic-addon2">{location.state.data.satuan}</InputGroup.Text>
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </div>
-                                    <div className="row">
-                                        <Form.Group as={Col} controlId="validationCustom01">
-                                            <Form.Label>Qty Total</Form.Label>
-                                            <InputGroup>
-                                                <NumericFormat 
-                                                    customInput={Form.Control}
-                                                    thousandSeparator={true}
-                                                    value={qtyTotal}
+                                            </Form.Group>
+                                        </div>
+                                        <div className="row">
+                                            <Form.Group as={Col} controlId="validationCustom01">
+                                                <Form.Label>Nama Item</Form.Label>
+                                                <Form.Control 
+                                                    as="textarea" 
+                                                    aria-label="With textarea" 
+                                                    rows={1}
+                                                    value = {location.state.data.nama_item}
+                                                    // onChange = {e => setNamaBarang(e.target.value)}
                                                     disabled
                                                 />
-                                                <InputGroup.Text id="basic-addon2">{location.state.data.satuan}</InputGroup.Text>
-                                            </InputGroup>
-                                        </Form.Group>
-                                    </div>
-                                </Card.Body>
-                            </Card>
+                                            </Form.Group>
+                                        </div>
+                                    </Accordion.Body>                       
+                                </Accordion.Item>
+                                <Accordion.Item eventKey="1" className='mb-2 box-fp'>
+                                    <Accordion.Header>Qty</Accordion.Header>
+                                    <Accordion.Body>
+                                        <div className="row">
+                                            <Form.Group as={Col} controlId="validationCustom01">
+                                                <Form.Label>Qty Permintaan</Form.Label>
+                                                <InputGroup>
+                                                    <NumericFormat 
+                                                        customInput={Form.Control}
+                                                        thousandSeparator={true}
+                                                        value={pengajuan}
+                                                        disabled
+                                                    />
+                                                    <InputGroup.Text id="basic-addon2">{location.state.data.satuan}</InputGroup.Text>
+                                                </InputGroup>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="row">
+                                            <Form.Group as={Col} controlId="validationCustom01">
+                                                <Form.Label>Qty Item /Bag</Form.Label>
+                                                <InputGroup>
+                                                    <NumericFormat 
+                                                        customInput={Form.Control}
+                                                        thousandSeparator={true}
+                                                        onChange={(e)=>{
+                                                            setQtyBag(e.target.value);
+                                                            setDataReady(true)
+                                                        }}
+                                                    />
+                                                    <InputGroup.Text id="basic-addon2">{location.state.data.satuan}</InputGroup.Text>
+                                                </InputGroup>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="row">
+                                            <Form.Group as={Col} controlId="validationCustom01">
+                                                <Form.Label>Qty Total</Form.Label>
+                                                <InputGroup>
+                                                    <NumericFormat 
+                                                        customInput={Form.Control}
+                                                        thousandSeparator={true}
+                                                        value={qtyTotal}
+                                                        disabled
+                                                    />
+                                                    <InputGroup.Text id="basic-addon2">{location.state.data.satuan}</InputGroup.Text>
+                                                </InputGroup>
+                                            </Form.Group>
+                                        </div>
+                                    </Accordion.Body>                       
+                                </Accordion.Item>
+                                <Accordion.Item eventKey="2" className='mb-2 box-fp'>
+                                    <Accordion.Header>Tallysheet</Accordion.Header>
+                                    <Accordion.Body>
+                                        <div className="row">
+                                            <Form.Group as={Col} controlId="validationCustom01">
+                                                <Form.Label>Qty Permintaan</Form.Label>
+                                                <InputGroup>
+                                                    <NumericFormat 
+                                                        customInput={Form.Control}
+                                                        thousandSeparator={true}
+                                                        value={pengajuan}
+                                                        disabled
+                                                    />
+                                                    <InputGroup.Text id="basic-addon2">{location.state.data.satuan}</InputGroup.Text>
+                                                </InputGroup>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="row">
+                                            <Form.Group as={Col} controlId="validationCustom01">
+                                                <Form.Label>Qty Item /Bag</Form.Label>
+                                                <InputGroup>
+                                                    <NumericFormat 
+                                                        customInput={Form.Control}
+                                                        thousandSeparator={true}
+                                                        onChange={(e)=>{
+                                                            setQtyBag(e.target.value);
+                                                            setDataReady(true)
+                                                        }}
+                                                    />
+                                                    <InputGroup.Text id="basic-addon2">{location.state.data.satuan}</InputGroup.Text>
+                                                </InputGroup>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="row">
+                                            <Form.Group as={Col} controlId="validationCustom01">
+                                                <Form.Label>Qty Total</Form.Label>
+                                                <InputGroup>
+                                                    <NumericFormat 
+                                                        customInput={Form.Control}
+                                                        thousandSeparator={true}
+                                                        value={qtyTotal}
+                                                        disabled
+                                                    />
+                                                    <InputGroup.Text id="basic-addon2">{location.state.data.satuan}</InputGroup.Text>
+                                                </InputGroup>
+                                            </Form.Group>
+                                        </div>
+                                        <Button variant="primary">cek tally</Button>
+                                    </Accordion.Body>                       
+                                </Accordion.Item>
+                            </Accordion>
                         </div>
                         <div className="col-md-7 mb-3">
                             <Accordion defaultActiveKey={['0','1','2']} alwaysOpen>
@@ -523,10 +577,6 @@ export const CreateFormproses = () => {
             <Modal.Title>Arahkan Kamera ke Qrcode</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <select onChange={(e) => setSelected(e.target.value)}>
-                    <option value={'environment'}>Back Camera</option>
-                    <option value={'user'}>Front Camera</option>
-                </select>
                 <div style={{display: 'flex', justifyContent:'flex-end', width: '100'}}>
                 {swaping ?
                     <Button 
@@ -542,7 +592,7 @@ export const CreateFormproses = () => {
                     <Button 
                         variant="outline-danger"
                         onClick={(e)=> {
-                            setSwaping(false)
+                            setSwaping(true)
                             setSelected("environment")
                         }}
                         >
@@ -552,7 +602,7 @@ export const CreateFormproses = () => {
                 </div>
                 <QrScanner
                     onDecode={(result) => handleScan(result)}
-                    onError={(error) => handleError(error?.message)}
+                    onError={(error) => handleError(error.message)}
                     constraints={{ facingMode: selected }}
                     delay={1000}
                     style={{ width: '100px' }}
