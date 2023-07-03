@@ -43,6 +43,8 @@ import { InputPermintaan } from '../../page/forms/permintaan/InputPermintaan';
 import { UpdatePermmintaan } from '../../page/forms/permintaan/UpdatePermmintaan';
 import { ViewPermintaan } from '../../page/forms/permintaan/ViewPermintaan';
 import { CreateFormproses } from '../../page/forms/fromProses/CreateFormproses';
+import { Tallysheet } from '../../page/forms/tallysheet/Tallysheet';
+import { CreateTallysheet } from '../../page/forms/tallysheet/CreateTallysheet';
 
 export const MenuBar = ({setAuth}) => {
 
@@ -128,6 +130,10 @@ export const MenuBar = ({setAuth}) => {
                     {/* 
                     
                     <Route exact path={"/"+divisi+"/FormProses/Update"} element={<UpdateFormproses />} /> */}
+
+                    {/* Tallysheet */}
+                    <Route exact path={"/"+divisi+"/Tallysheet"} element={<Tallysheet />} />
+                    <Route exact path={"/"+divisi+"/Tallysheet/Create"} element={<CreateTallysheet />} />
                 </Routes>
             </div>
         </div>

@@ -119,7 +119,7 @@ export const MenuPpic = () => {
                 </Col>
             </Link>
     
-            <Link to="" className='link'>
+            <Link to={"/main/"+divisi+"/Tallysheet"} className='link'>
                 <Col>
                 <Card className="text-center">
                     <span className='icon'><i className="bi bi-clipboard-check"></i></span>
