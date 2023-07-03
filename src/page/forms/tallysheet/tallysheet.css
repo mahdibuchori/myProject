@@ -1,0 +1,29 @@
+.tallysheetSet{
+    flex: 5;
+    margin: 50px 5px 5px 5px;
+    padding: 5px 5px 5px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tallysheetSet-item-top {
+    display: flex;
+    background-color: #f1f1f1;
+    text-align: left;
+    height: 40px;
+    justify-content: space-between;
+}
+
+.bs-box{
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    color: var(--blue);
+    border-color: var(--blue);
+}
+
+.list-group{
+    max-height: 300px;
+    margin-bottom: 10px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
