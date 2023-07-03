@@ -148,3 +148,10 @@ export const FileKartu = [
   { value: 'SO', label: 'SO (Stock Opname)' },
   { value: 'SJ', label: 'SJ (Surat Jalan)' },
 ]
+
+export const FileTally = [
+  { value: 'A-ID', label: 'A-ID' },
+  { value: 'A-ID', label: 'A-IID' },
+  { value: 'K4', label: 'K4' },
+  { value: 'M4', label: 'M4' }
+]
