@@ -18,3 +18,22 @@
     0px 0px 16px -3px rgba(133, 188, 255),
     0px 4px 15px -16px rgba(133, 188, 255);
 }
+
+section {
+    display: grid;
+    grid-template-columns: var(--page-margin) [center-start] 1fr [center-end] var(--page-margin);
+    
+    & > * {
+      grid-column: center;
+    }
+  }
+  
+  .cards-wrapper {
+    grid-column: center-start / -1;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1rem;
+    overflow: auto;
+    padding-bottom: 1rem;
+    padding-right: var(--page-margin);
+  }

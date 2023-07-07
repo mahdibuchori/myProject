@@ -14,8 +14,7 @@ import { Accordion, Breadcrumb, Button, Card, Col, Container, FloatingLabel, For
 import useProviderStore, {selectProvider, selectFetchProvider, selectProviderReady} from '../../../store/listProvider';
 import useTallyStore, { selectTally, selectFetchTally, selectTallyReady, selectFalseTally } from '../../../store/ListTally';
 
-export const CreateFormproses = () => {
-    let navigate = useNavigate();
+export const CreateFormproses = () => {let navigate = useNavigate();
     const location = useLocation();
     const userData = useAuthStore(selectUser);
     const newProvider = useProviderStore(selectProvider);
@@ -215,6 +214,7 @@ export const CreateFormproses = () => {
     const  handleScan = (data) => {
         
         if (data) {
+        //   setResult(data);
         if(data === ""){
             handleClose()
             Swal.fire('Oppss..','Data tidak ditemukan','warning');
@@ -259,7 +259,6 @@ export const CreateFormproses = () => {
     }
 
     const readTally = () =>{
-        console.log(tallyData)
         if(tallyData.length === 0){
 
         }
@@ -349,38 +348,7 @@ export const CreateFormproses = () => {
         tally.sort(function(a,b){
             return new Date(a.tambahan) - new Date(b.tambahan)
           })
-        console.log(tally)
-        /* const tally = tallyData.map(e => {
-            let qty = 0;
-            if(e.status === "Terpakai"){
-                qty = 0;
-            }
-            else{
-                qty = parseFloat(e.qty_tally);
-            }
-            let no = e.id_tally.split("-");
-            return ({
-                noTally : parseInt(no[1]),
-                id_tally : e.id_tally,	
-                no_tally : e.no_tally,
-                bulan_tahun : e.bulan_tahun,
-                item : e.item,
-                unit : e.unit,	
-                no_lot : e.no_lot,
-                qty_tally : qty,
-                status : e.status,
-                supplier : e.supplier,	
-                tgl_tally : e.tgl_tally,	
-                petugas_tally : e.petugas_tally,	
-                tgl_input : e.tgl_input,
-                petugas_input : e.petugas_input,	
-                tambahan : e.tambahan,
-                id_formproses : e.id_formproses,
-                potong_karung : e.potong_karung,	
-                plan : e.plan,	
-                keterangan : e.keterangan,
-            });
-        }); */
+        
         const newTally = tally.filter(x => x.no_tally === `${e.value}`);
         const tallys = newTally.map((e, i) => {
             return(
@@ -423,7 +391,7 @@ export const CreateFormproses = () => {
           
             return resultArray
         }, []);
-        setDataTally(result)
+        setDataTally(result);
     }
 
     const handlecheckbox = (e) => {
@@ -499,33 +467,6 @@ export const CreateFormproses = () => {
                 qtyAll = qtyTotal
                 
             }
-            let data = [{
-                kode : kode,
-                noOKp : location.state.data.id_okp,
-                id_permintaan : location.state.data.id_permintaan,
-                item : location.state.data.nama_item,
-                qtyBag : qtyBag,
-                qtyTotal : qtyAll,
-                noLot : noLot,
-                supplier : `${supplier.value}`,
-                pltAwal : pltAwal,
-                tingAwal : tingAwal,
-                barAwal : barAwal,
-                sisaAwal : sisaAwal,
-                pecAwal : pecAwal,
-                pltAkhir : pltAkhir,
-                tingAkhir : tingAkhir,
-                barAkhir : barAkhir,
-                sisaAkhir : sisaAkhir,
-                pecAkhir : pecAkhir,
-                qtyAwal : qtyAwal,
-                qtyAkhir : qtyAkhir,
-                totalQty : hslAk,
-                user : userData.user_name,
-                plan : userData.user_plan,
-                dataTally : selectedcourse,
-            }]
-            console.log(data)
             try {
                 setIsLoading(true)
                 const next = await API_AUTH.put(`/prosesform/${kode}`, {
@@ -554,152 +495,12 @@ export const CreateFormproses = () => {
                     plan : userData.user_plan,
                     dataTally : selectedcourse,
                 });
-                console.log(next.data.message)
                 Swal.fire('Success',`${next.data.message}`,'success');
                 setIsLoading(false)
             } catch (error) {
                 Swal.fire('Opps..',`${error.response.data.message}`,'error');
-                console.log(error.response.data.message)
                 setIsLoading(false)
             }
-
-            /* {
-                kode: 'FPCYUV90623',
-                noOKp: '02/OKP/PPIC/DEE/IV/2023',
-                id_permintaan: 'PER/f63v/02/OKP/PPIC/DEE/IV/2023/STL',
-                item: 'M4',
-                qtyBag: 0,
-                qtyTotal: 0,
-                noLot: 'E-31-23',
-                supplier: 'PT. CHAROEN POKPHAND INDONESIA',
-                pltAwal: '2',
-                tingAwal: '5',
-                barAwal: '5',
-                sisaAwal: '1',
-                pecAwal: '0',
-                pltAkhir: '1',
-                tingAkhir: '5',
-                barAkhir: '5',
-                sisaAkhir: '0',
-                pecAkhir: '20',
-                qtyAwal: 52,
-                qtyAkhir: 45,
-                totalQty: 7,
-                user: 'PPIC',
-                plan: 'Sentul',
-                dataTally: [
-                  {
-                    noTally: 50,
-                    id_tally: '07AQ0623-50',
-                    no_tally: 'M407AQ0623',
-                    bulan_tahun: '2023-05',
-                    item: 'M4',
-                    unit: 'Kg',
-                    no_lot: 'E-31-23',
-                    qty_tally: 40.4,
-                    status: '',
-                    supplier: 'PT. CHAROEN POKPHAND INDONESIA',
-                    tgl_tally: '2023-05-31',
-                    petugas_tally: 'Muhamad Ikbal',
-                    tgl_input: '',
-                    petugas_input: '',
-                    tambahan: '',
-                    id_formproses: '',
-                    potong_karung: '0.2',
-                    plan: 'Sentul',
-                    keterangan: [],
-                    checked: true
-                  },
-                  {
-                    noTally: 49,
-                    id_tally: '07AQ0623-49',
-                    no_tally: 'M407AQ0623',
-                    bulan_tahun: '2023-05',
-                    item: 'M4',
-                    unit: 'Kg',
-                    no_lot: 'E-31-23',
-                    qty_tally: 40.31,
-                    status: '',
-                    supplier: 'PT. CHAROEN POKPHAND INDONESIA',
-                    tgl_tally: '2023-05-31',
-                    petugas_tally: 'Muhamad Ikbal',
-                    tgl_input: '',
-                    petugas_input: '',
-                    tambahan: '',
-                    id_formproses: '',
-                    potong_karung: '0.2',
-                    plan: 'Sentul',
-                    keterangan: [],
-                    checked: true
-                  },
-                  {
-                    noTally: 48,
-                    id_tally: '07AQ0623-48',
-                    no_tally: 'M407AQ0623',
-                    bulan_tahun: '2023-05',
-                    item: 'M4',
-                    unit: 'Kg',
-                    no_lot: 'E-31-23',
-                    qty_tally: 40.49,
-                    status: '',
-                    supplier: 'PT. CHAROEN POKPHAND INDONESIA',
-                    tgl_tally: '2023-05-31',
-                    petugas_tally: 'Muhamad Ikbal',
-                    tgl_input: '',
-                    petugas_input: '',
-                    tambahan: '',
-                    id_formproses: '',
-                    potong_karung: '0.2',
-                    plan: 'Sentul',
-                    keterangan: [],
-                    checked: true
-                  },
-                  {
-                    noTally: 47,
-                    id_tally: '07AQ0623-47',
-                    no_tally: 'M407AQ0623',
-                    bulan_tahun: '2023-05',
-                    item: 'M4',
-                    unit: 'Kg',
-                    no_lot: 'E-31-23',
-                    qty_tally: 40.53,
-                    status: '',
-                    supplier: 'PT. CHAROEN POKPHAND INDONESIA',
-                    tgl_tally: '2023-05-31',
-                    petugas_tally: 'Muhamad Ikbal',
-                    tgl_input: '',
-                    petugas_input: '',
-                    tambahan: '',
-                    id_formproses: '',
-                    potong_karung: '0.2',
-                    plan: 'Sentul',
-                    keterangan: [],
-                    checked: true
-                  },
-                  {
-                    noTally: 46,
-                    id_tally: '07AQ0623-46',
-                    no_tally: 'M407AQ0623',
-                    bulan_tahun: '2023-05',
-                    item: 'M4',
-                    unit: 'Kg',
-                    no_lot: 'E-31-23',
-                    qty_tally: 40.4,
-                    status: '',
-                    supplier: 'PT. CHAROEN POKPHAND INDONESIA',
-                    tgl_tally: '2023-05-31',
-                    petugas_tally: 'Muhamad Ikbal',
-                    tgl_input: '',
-                    petugas_input: '',
-                    tambahan: '',
-                    id_formproses: '',
-                    potong_karung: '0.2',
-                    plan: 'Sentul',
-                    keterangan: [],
-                    checked: true
-                  }
-                ]
-              } */
         }
     }
 
@@ -1223,7 +1024,6 @@ export const CreateFormproses = () => {
                 <div className="cards-wrapper">
                     {dataTally.map((x, i) => {
                         let nilai = dataTally[i];
-                        console.log(nilai)
                         return(
                             <div>
                                 {nilai.map((x, i) => {
