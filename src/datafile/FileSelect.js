@@ -151,6 +151,7 @@ export const FileKartu = [
 
 export const FileTally = [
   { value: 'A-ID', label: 'A-ID' },
+  { value: 'A-IDK', label: 'A-IDK' },
   { value: 'A-ID', label: 'A-IID' },
   { value: 'K4', label: 'K4' },
   { value: 'M4', label: 'M4' }

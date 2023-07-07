@@ -45,6 +45,8 @@ import { ViewPermintaan } from '../../page/forms/permintaan/ViewPermintaan';
 import { CreateFormproses } from '../../page/forms/fromProses/CreateFormproses';
 import { Tallysheet } from '../../page/forms/tallysheet/Tallysheet';
 import { CreateTallysheet } from '../../page/forms/tallysheet/CreateTallysheet';
+import { EditTallysheet } from '../../page/forms/tallysheet/EditTallysheet';
+import { PdfTallysheet } from '../../page/forms/tallysheet/PdfTallysheet';
 
 export const MenuBar = ({setAuth}) => {
 
@@ -134,6 +136,8 @@ export const MenuBar = ({setAuth}) => {
                     {/* Tallysheet */}
                     <Route exact path={"/"+divisi+"/Tallysheet"} element={<Tallysheet />} />
                     <Route exact path={"/"+divisi+"/Tallysheet/Create"} element={<CreateTallysheet />} />
+                    <Route exact path={"/"+divisi+"/Tallysheet/Preview"} element={<EditTallysheet />} />
+                    <Route exact path={"/"+divisi+"/Tallysheet/PDF"} element={<PdfTallysheet />} />
                 </Routes>
             </div>
         </div>

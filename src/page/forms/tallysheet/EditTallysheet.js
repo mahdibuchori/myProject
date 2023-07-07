@@ -1,15 +1,16 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
+import './tallysheet.css';
 import Swal from "sweetalert2";
+import { API_AUTH } from '../../../apis/apisData';
 import { NumericFormat } from 'react-number-format';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { API_AUTH } from '../../../apis/apisData';
 import { LoadingPage } from '../../../LoadingPage/LoadingPage';
 import { Accordion, Breadcrumb, Button, Card, Col, Container, Dropdown, FloatingLabel, Form, ListGroup, Modal, Stack } from 'react-bootstrap';
 
 import useAuthStore, { selectUser } from '../../../store/authLogin';
 import useTallyStore, { selectTallyByID, selectFetchTallyId, selectFalseTallyId, selectTallyIdReady } from '../../../store/ListTally';
 
-export const CreateTallysheet = () => {
+export const EditTallysheet = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -31,6 +32,7 @@ export const CreateTallysheet = () => {
     const [validated, setValidated] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [show, setShow] = useState(false);
+    const [play, setPlay] = useState(true);
 
     const handleClose = () => setShow(false);
 
@@ -41,15 +43,12 @@ export const CreateTallysheet = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        // console.log(tallyReady)
         if (!tallyReady) return;
         onDataReady();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tallyReady]);
 
     const onDataReady = () =>{
-        // console.log(location.state.data);
-        // console.log(tallyData);
         const xsd = (Math.random().toString(36).slice(-2)).toUpperCase();
         setIdTally(`${location.state.data.id_tally}-${xsd}`);
         setKarung(tallyData.length);
@@ -68,13 +67,15 @@ export const CreateTallysheet = () => {
                 return({ id_tally: e.id_tally, qty_tally: e.qty_tally, tambahan: d })
             }    
         );
-        // console.log(result)
 
         result.sort(function(a,b){
             return new Date(b.tambahan) - new Date(a.tambahan)
           })
-        setdataFile(result)
-        //   console.log(result)
+        setdataFile(result);
+
+        if(location.state.data.petugas_tally ===  userData.user_name){
+            setPlay(false)
+        }
         
         setIsLoading(false);
     }
@@ -82,7 +83,6 @@ export const CreateTallysheet = () => {
     const handleSubmit =async (event) => {
         event.preventDefault();
         const form = event.currentTarget;
-        // console.log(form.checkValidity());
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
@@ -97,19 +97,6 @@ export const CreateTallysheet = () => {
             let dd = String(day).padStart(2, '0');
             setIsLoading(true);
             try {
-                /* console.log({
-                    id_tally : idTally,
-                    no_tally : location.state.data.no_tally,	
-                    bulan_tahun	: location.state.data.bulan_tahun,
-                    item : location.state.data.item,	
-                    no_lot : location.state.data.nolot,	
-                    qty_tally :	`${qtyData}`,	
-                    supplier : location.state.data.provider,
-                    tgl_tally : `${year}-${bb}-${dd}`,	
-                    petugas_tally : userData.user_name,	
-                    potong_karung : `${location.state.data.potKar}`,
-                    plan : userData.user_plan,
-                }) */
                 const next = await API_AUTH.post(`/saveTally`, {
                     id_tally : idTally,
                     no_tally : location.state.data.no_tally,	
@@ -162,14 +149,17 @@ export const CreateTallysheet = () => {
                 Swal.fire(`${error.response.data.message}`, "", 'error');
                 setIsLoading(false)
             }
+        // id_tally, no_tally, qty_tally, plan, status
+    }
+
+    const handlePrint = () =>{
+        navigate(`/main/${userData.user_divisi}/Tallysheet/PDF`,{state:{
+            data : tallyData
+          }});
     }
     
     const cekNumber = (e) =>{
         setQtyData(e)
-    }
-    
-    const handlePrint = () =>{
-
     }
 
     const handleRefresh = () =>{
@@ -177,14 +167,13 @@ export const CreateTallysheet = () => {
         fetchTally(location.state.data.no_tally, userData.user_plan);
         onDataReady();
     }
-    
 
     const backhome = (e) =>{
         fetchTally();
         navigate(e);
     }
 
-  return (
+    return (
         <>
         <div className='tallysheetSet'>
             <Stack direction="horizontal" gap={3} style={{padding: "0px 10px 0px 10px"}}>
@@ -205,7 +194,7 @@ export const CreateTallysheet = () => {
                         <Dropdown.Menu variant="dark">
                             <Dropdown.Item onClick={e => handlePrint()}><i className="bi bi-printer-fill"></i> Cetak</Dropdown.Item>
                             <Dropdown.Divider />
-                            <Dropdown.Item onClick={e => handleRefresh()}><i className="bi bi-arrow-clockwise"></i> Refresh</Dropdown.Item>
+                            <Dropdown.Item onClick={e=>handleRefresh()}><i className="bi bi-arrow-clockwise"></i> Refresh</Dropdown.Item>
                             
                         </Dropdown.Menu>
                     </Dropdown>
@@ -247,6 +236,26 @@ export const CreateTallysheet = () => {
                                                 <Form.Control
                                                     type="text"
                                                     value={location.state.data.nolot}
+                                                    disabled
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                        <div className="row">
+                                            <Form.Group as={Col} controlId="validationCustom01">
+                                                <Form.Label>No. Surat Jalan</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    value={location.state.data.srtJlan}
+                                                    disabled
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                        <div className="row">
+                                            <Form.Group as={Col} controlId="validationCustom01">
+                                                <Form.Label>Petugas Tallysheet</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    value={location.state.data.petugas_tally}
                                                     disabled
                                                 />
                                             </Form.Group>
@@ -312,6 +321,7 @@ export const CreateTallysheet = () => {
                                                 <Button 
                                                     type="submit" 
                                                     className='mt-2'
+                                                    disabled={play}
                                                 >
                                                     <i className="bi bi-send"></i> Simpan
                                                 </Button>
@@ -348,13 +358,16 @@ export const CreateTallysheet = () => {
                                 </Card.Body>
                             </Card>
 
-                            <ListGroup as="ol">
+                            <ListGroup as="ol" className='p-2'>
                                 {dataFile.map((x, i) => {
                                     let n = dataFile.length - i
                                     return(
                                         <ListGroup.Item as="li" className='d-flex mb-3 justify-content-between align-items-center flex-wrap bs-box'>
-                                        <h3 className="mb-0 text-dark">{n}. {x.qty_tally}</h3>
-                                        <Button onClick={e => handleShow(x.qty_tally, x.id_tally)}>
+                                        <h4 className="mb-0 text-dark">{n}. {x.qty_tally}</h4>
+                                        <Button 
+                                            onClick={e => handleShow(x.qty_tally, x.id_tally)} 
+                                            disabled={play}
+                                        >
                                             <i className="bi bi-pencil"></i> Edit
                                         </Button>
                                         </ListGroup.Item>
@@ -419,5 +432,5 @@ export const CreateTallysheet = () => {
 
         {isLoading ? <LoadingPage /> : ""}
         </>
-  )
+    )
 }
