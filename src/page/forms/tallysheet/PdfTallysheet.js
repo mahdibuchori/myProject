@@ -244,9 +244,9 @@ export const PdfTallysheet = () => {
                                                             }
                                                             else{
                                                                 let nilai = ''
-                                                                if(y === 0){nilai = dataTally[n].item}
-                                                                else if(y === 1){nilai = dataTally[n].no_lot}
-                                                                else{nilai = dataTally[n].supplier}
+                                                                if(y === 0){nilai = dataTally[n][0].item}
+                                                                else if(y === 1){nilai = dataTally[n][0].no_lot}
+                                                                else{nilai = dataTally[n][0].supplier}
                                                                 return(
                                                                     <View style={[styles.border, {width : '52mm',height: '4.5mm'}]}>
                                                                     <Text style={{fontSize : '6.5',textAlign: 'left',paddingLeft: '1',paddingTop: '2'}}>{nilai}</Text>
@@ -352,9 +352,9 @@ export const PdfTallysheet = () => {
                                                             }
                                                             else{
                                                                 let nilai = ''
-                                                                if(y === 0){nilai = dataTally[n].item}
-                                                                else if(y === 1){nilai = dataTally[n].no_lot}
-                                                                else{nilai = dataTally[n].supplier}
+                                                                if(y === 0){nilai = dataTally[n][0].item}
+                                                                else if(y === 1){nilai = dataTally[n][0].no_lot}
+                                                                else{nilai = dataTally[n][0].supplier}
                                                                 return(
                                                                     <View style={[styles.border, {width : '52mm',height: '4.5mm'}]}>
                                                                     <Text style={{fontSize : '6.5',textAlign: 'left',paddingLeft: '1',paddingTop: '2'}}>{nilai}</Text>
@@ -461,9 +461,9 @@ export const PdfTallysheet = () => {
                                                                 }
                                                                 else{
                                                                     let nilai = ''
-                                                                    if(y === 0){nilai = dataTally[n].item}
-                                                                    else if(y === 1){nilai = dataTally[n].no_lot}
-                                                                    else{nilai = dataTally[n].supplier}
+                                                                    if(y === 0){nilai = dataTally[n][0].item}
+                                                                    else if(y === 1){nilai = dataTally[n][0].no_lot}
+                                                                    else{nilai = dataTally[n][0].supplier}
                                                                     return(
                                                                         <View style={[styles.border, {width : '52mm',height: '4.5mm'}]}>
                                                                         <Text style={{fontSize : '6.5',textAlign: 'left',paddingLeft: '1',paddingTop: '2'}}>{nilai}</Text>

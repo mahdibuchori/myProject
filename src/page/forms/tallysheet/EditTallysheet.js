@@ -109,6 +109,7 @@ export const EditTallysheet = () => {
                     petugas_tally : userData.user_name,	
                     potong_karung : `${location.state.data.potKar}`,
                     tambahan : date, //`${hh}:${mm}:${ss}`
+                    srtJlan : `${location.state.data.srtJlan}`,
                     plan : userData.user_plan,
                 });
                 setQtyData('');
@@ -153,6 +154,7 @@ export const EditTallysheet = () => {
     }
 
     const handlePrint = () =>{
+        console.log(tallyData)
         navigate(`/main/${userData.user_divisi}/Tallysheet/PDF`,{state:{
             data : tallyData
           }});
@@ -181,7 +183,7 @@ export const EditTallysheet = () => {
                     <Breadcrumb className="m-2">
                         <Breadcrumb.Item onClick={() =>backhome(`/main/${userData.user_divisi}`)}>Form</Breadcrumb.Item>
                         <Breadcrumb.Item onClick={() => backhome(`/main/${userData.user_divisi}/Tallysheet`)}>List Tallysheet</Breadcrumb.Item>
-                        <Breadcrumb.Item active>Create</Breadcrumb.Item>
+                        <Breadcrumb.Item active>Edit</Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
                 <div className=" ms-auto"></div>

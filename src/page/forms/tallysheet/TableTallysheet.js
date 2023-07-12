@@ -31,6 +31,7 @@ export const TableTallysheet = () => {
 
     const [bulan, setBulan] = useState();
     const [nolot, setNolot] = useState('');
+    const [srtJlan, setSrtJlan] = useState('');
     const [key, setKey] = useState('A-ID' );
     const [provider, setProvider] = useState([]);
     const [bonlesAi, setBonlesAi] = useState([]);
@@ -216,6 +217,7 @@ export const TableTallysheet = () => {
             nolot : nolot,
             potKar : potKarung,
             provider : supplier,
+            srtJlan : srtJlan,
             bulan_tahun : bulan
         }
         navigate(`/main/${userData.user_divisi}/Tallysheet/Create`,{state:{
@@ -245,7 +247,6 @@ export const TableTallysheet = () => {
                 return r;
             }, {}));
             const item = result.filter(x => x.no_tally === e);
-            console.log(item)
             let idTall = item[0].id_tally.split('-');
             let data = {
                 no_tally : item[0].no_tally,
@@ -259,7 +260,6 @@ export const TableTallysheet = () => {
                 srtJlan : item[0].srtJlan,
                 plan : item[0].plan
             }
-            console.log(data);
             navigate(`/main/${userData.user_divisi}/Tallysheet/Preview`,{state:{
                 data : data
             }});
@@ -399,6 +399,15 @@ export const TableTallysheet = () => {
                                         {`${tAkhirPakai} ${card.unit}`}
                                         </Badge>
                                     </ListGroup.Item>
+
+                                    <ListGroup.Item
+                                            as="li"
+                                            className="d-flex justify-content-between align-items-start"
+                                    >
+                                        <div className="ms-2 me-auto">
+                                            <div>{card.supplier}</div>
+                                        </div>
+                                    </ListGroup.Item>
                                 </ListGroup>
                                 <div className="d-grid gap-2 d-md-flex justify-content-md-end p-1">
                                     <Button type="submit" className="btn btn-primary" onClick={e => handlePreview(card.no_tally)}>
@@ -487,6 +496,15 @@ export const TableTallysheet = () => {
                                         <Badge bg="light" className="text-dark fw-bold">
                                         {`${tAkhirPakai} ${card.unit}`}
                                         </Badge>
+                                    </ListGroup.Item>
+
+                                    <ListGroup.Item
+                                            as="li"
+                                            className="d-flex justify-content-between align-items-start"
+                                    >
+                                        <div className="ms-2 me-auto">
+                                            <div>{card.supplier}</div>
+                                        </div>
                                     </ListGroup.Item>
                                 </ListGroup>
                                 <div className="d-grid gap-2 d-md-flex justify-content-md-end p-1">
@@ -577,6 +595,15 @@ export const TableTallysheet = () => {
                                         {`${tAkhirPakai} ${card.unit}`}
                                         </Badge>
                                     </ListGroup.Item>
+
+                                    <ListGroup.Item
+                                            as="li"
+                                            className="d-flex justify-content-between align-items-start"
+                                    >
+                                        <div className="ms-2 me-auto">
+                                            <div>{card.supplier}</div>
+                                        </div>
+                                    </ListGroup.Item>
                                 </ListGroup>
                                 <div className="d-grid gap-2 d-md-flex justify-content-md-end p-1">
                                     <Button type="submit" className="btn btn-primary" onClick={e => handlePreview(card.no_tally)}>
@@ -665,6 +692,15 @@ export const TableTallysheet = () => {
                                         <Badge bg="light" className="text-dark fw-bold">
                                         {`${tAkhirPakai} ${card.unit}`}
                                         </Badge>
+                                    </ListGroup.Item>
+
+                                    <ListGroup.Item
+                                        as="li"
+                                        className="d-flex justify-content-between align-items-start"
+                                    >
+                                        <div className="ms-2 me-auto">
+                                            <div>{card.supplier}</div>
+                                        </div>
                                     </ListGroup.Item>
                                 </ListGroup>
                                 <div className="d-grid gap-2 d-md-flex justify-content-md-end p-1">
@@ -755,6 +791,15 @@ export const TableTallysheet = () => {
                                         {`${tAkhirPakai} ${card.unit}`}
                                         </Badge>
                                     </ListGroup.Item>
+
+                                    <ListGroup.Item
+                                        as="li"
+                                        className="d-flex justify-content-between align-items-start"
+                                    >
+                                        <div className="ms-2 me-auto">
+                                            <div>{card.supplier}</div>
+                                        </div>
+                                    </ListGroup.Item>
                                 </ListGroup>
                                 <div className="d-grid gap-2 d-md-flex justify-content-md-end p-1">
                                     <Button type="submit" className="btn btn-primary" onClick={e => handlePreview(card.no_tally)}>
@@ -844,6 +889,15 @@ export const TableTallysheet = () => {
                                         {`${tAkhirPakai} ${card.unit}`}
                                         </Badge>
                                     </ListGroup.Item>
+
+                                    <ListGroup.Item
+                                        as="li"
+                                        className="d-flex justify-content-between align-items-start"
+                                    >
+                                        <div className="ms-2 me-auto">
+                                            <div>{card.supplier}</div>
+                                        </div>
+                                    </ListGroup.Item>
                                 </ListGroup>
                                 <div className="d-grid gap-2 d-md-flex justify-content-md-end p-1">
                                     <Button type="submit" className="btn btn-primary" onClick={e => handlePreview(card.no_tally)}>
@@ -889,6 +943,16 @@ export const TableTallysheet = () => {
                     />
                 </Form.Group>
                 <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
+                    <Form.Label>No Surat Jalan</Form.Label>
+                    <Form.Control
+                        type="text"
+                        value={srtJlan}
+                        onChange={
+                            e => setSrtJlan(e.target.value.toUpperCase())
+                        }
+                    />
+                </Form.Group>
+                <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
                     <Form.Label>Potong Karung</Form.Label>
                     <NumericFormat 
                         customInput={Form.Control}
@@ -911,10 +975,10 @@ export const TableTallysheet = () => {
             </Form>
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-            Close
+        <Button variant="danger" onClick={handleClose}>
+            Batal
         </Button>
-        <Button variant="primary" onClick={e => handleSubmit()}>Understood</Button>
+        <Button variant="primary" onClick={e => handleSubmit()}>Simpan</Button>
         </Modal.Footer>
     </Modal>
     

@@ -122,6 +122,7 @@ export const CreateTallysheet = () => {
                     petugas_tally : userData.user_name,	
                     potong_karung : `${location.state.data.potKar}`,
                     tambahan : date, //`${hh}:${mm}:${ss}`
+                    srtJlan : `${location.state.data.srtJlan}`,
                     plan : userData.user_plan,
                 });
                 setQtyData('');
@@ -253,6 +254,16 @@ export const CreateTallysheet = () => {
                                         </div>
                                         <div className="row">
                                             <Form.Group as={Col} controlId="validationCustom01">
+                                                <Form.Label>No. Surat Jalan</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    value={location.state.data.srtJlan}
+                                                    disabled
+                                                />
+                                            </Form.Group>
+                                        </div>
+                                        <div className="row">
+                                            <Form.Group as={Col} controlId="validationCustom01">
                                                 <Form.Label>Potong Karung</Form.Label>
                                                 <Form.Control
                                                     type="text"
@@ -294,7 +305,7 @@ export const CreateTallysheet = () => {
 
                                         <div className='col-sm-6 col-md-4'>
                                             <Form.Group as={Col} controlId="validationCustom01">
-                                                <Form.Label>Total Karung</Form.Label>
+                                                <Form.Label>Qty Barang</Form.Label>
                                                 <NumericFormat 
                                                     customInput={Form.Control}
                                                     thousandSeparator={true}
