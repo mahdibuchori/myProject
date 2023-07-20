@@ -53,7 +53,7 @@ export const BottomBar = () => {
           </span>
           </li>
       </Link>
-      <Link to={"/"} className='link'>
+      <Link to={"/main/dashboard"} className='link'>
       <li className={activeLink === 'dashboard' ||activeLink === undefined ? 'active list' : 'list'} onClick={()=> onUpdateActiveLink('dashboard')}>
           <span className='coverAll'>
           <span className='icon'><i class="bi bi-menu-button-wide-fill"></i></span>
@@ -62,7 +62,7 @@ export const BottomBar = () => {
       </li>
       </Link>
 
-      <Link to={"/"} className='link'>
+      <Link to={"/main/news"} className='link'>
           <li className={activeLink === 'news' ? 'active list' : 'list'} onClick={()=> onUpdateActiveLink('news')}>
           <span className='coverAll'>
               <span className='icon'><i class="bi bi-newspaper"></i></span>

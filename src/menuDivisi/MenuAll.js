@@ -175,6 +175,17 @@ export const MenuAll = () => {
                 </Col>
             </Link>
 
+            <Link to={"/main/"+divisi+"/Sales"} className='link'>
+                <Col>
+                <Card className="text-center">
+                    <span className='icon'><i className="bi bi-graph-up-arrow"></i></span>
+                    <Card.Body>
+                    <Card.Text>Sales</Card.Text>
+                    </Card.Body>
+                </Card>
+                </Col>
+            </Link>
+
             </Row>
         </div>
     </div>

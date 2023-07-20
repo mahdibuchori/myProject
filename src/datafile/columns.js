@@ -476,3 +476,294 @@ export const COLUMNS_PERMINTAAN =[
         pinned: 'right'
     }
 ]
+
+export const COLUMNS_STOCKCARD =[
+    {
+        headerName: 'Item',
+        field : 'item',
+        width: 150,
+        maxWidth:375,
+        suppressSizeToFit: true,
+        pinned: 'left',
+        filter: 'agTextColumnFilter',
+        headerCheckboxSelection: true,
+        checkboxSelection: true,
+        showDisabledCheckboxes: true,
+    },
+    {
+        headerName: 'Tanggal',
+        field : 'tanggal',
+        width: 95,
+        maxWidth:155,
+    },
+    {
+        headerName: 'Sumber',
+        field : 'sumber',
+        width: 95,
+        maxWidth:155,
+    },
+    {
+        headerName: 'Tipe',
+        field : 'tipe',
+        width: 115,
+        maxWidth:155,
+    },
+    {
+        headerName: 'Provider',
+        field : 'provider',
+        width: 115,
+        maxWidth:155,
+    },
+    {
+        headerName: 'No. Lot',
+        field : 'lot',
+        width: 100,
+        maxWidth:115,
+    },
+    {
+        headerName: 'Expired',
+        field : 'expired',
+        width: 100,
+        maxWidth:115,
+    },
+    {
+        headerName: 'Keterangan',
+        field : 'keterangan',
+        width: 130,
+        maxWidth:155,
+    },
+    {
+        headerName: 'Terima Barang',
+        field : 'terima_barang',
+        width: 130,
+        maxWidth:155,
+    },
+    {
+        headerName: 'Return Produksi',
+        field : 'return_prod',
+        width: 130,
+        maxWidth:155,
+    },
+    {
+        headerName: 'Produksi',
+        field : 'produksi',
+        width: 130,
+        maxWidth:155,
+    },
+    {
+        headerName: 'Pindah Barang',
+        field : 'pindah_barang',
+        width: 130,
+        maxWidth:155,
+    },
+    {
+        headerName: 'Saldo',
+        field : 'saldo',
+        width: 130,
+        maxWidth:155,
+    },
+    {
+        headerName: 'Stok Awal',
+        field : 'stok_awal',
+        width: 130,
+        maxWidth:155,
+    },
+    {
+        headerName: 'Stock Akhir',
+        field : 'stock_akhir',
+        width: 130,
+        maxWidth:155,
+    },
+    {
+        headerName: 'Petugas',
+        field : 'petugas',
+        width: 130,
+        maxWidth:155,
+    },
+]
+
+// ITEMNO, ITEMDESCRIPTION, UNIT1, UNITPRICE, KATEGORI, BRAND product
+//SALESMANID","FIRSTNAME","JOBTITLE","CELLULAR","EMAIL","NOTES" sales
+////"PERSONNO","NAME","ADDRESSLINE1","ADDRESSLINE2","PHONE","CONTACT","EMAIL","TERMSID","TERMNAME","CREDITLIMIT","OVERDUESILIMIT","TAX1ID","TAX1EXEMPTIONNO","SALESMANID","TYPENAME","STATUS","KATEGORICUST" custumer
+
+export const COLUMNS_PRODUCT =[
+    {
+        headerName: 'ITEMNO',
+        field : 'itemno',
+        width: 150,
+        suppressSizeToFit: true
+    },
+    {
+        headerName: 'ITEMDESCRIPTION',
+        width: 350,
+        field : 'itemdescription',
+    },
+    {
+        headerName: 'UNIT',
+        field : 'unit1',
+        width: 90,
+        suppressSizeToFit: true,
+    },
+    {
+        headerName: 'UNITPRICE',
+        field : 'unitprice',
+        width: 120,
+    },
+    {
+        headerName: 'KATEGORI',
+        field : 'kategori',
+        width: 120,
+    },
+    {
+        headerName: 'BRAND',
+        field : 'brand',
+        width: 120,
+    },
+]
+export const COLUMNS_SALES =[
+    {
+        headerName: 'SALESMANID',
+        field : 'salesmanid',
+        width: 120,
+        suppressSizeToFit: true
+    },
+    {
+        headerName: 'FIRSTNAME',
+        width: 350,
+        field : 'firstname',
+    },
+    {
+        headerName: 'JOBTITLE',
+        field : 'jobtitle',
+        width: 180,
+        suppressSizeToFit: true,
+    },
+    {
+        headerName: 'CELLULAR',
+        field : 'cellular',
+        width: 120,
+    },
+    {
+        headerName: 'EMAIL',
+        field : 'email',
+        width: 120,
+    },
+    {
+        headerName: 'NOTES',
+        field : 'notes',
+        width: 120,
+    },
+    /* {
+        field : '',
+        headerName: 'Action',
+        cellRenderer: '',
+        width: 120,
+        pinned: 'right'
+    } */
+]
+////"PERSONNO","NAME","ADDRESSLINE1","ADDRESSLINE2","PHONE","CONTACT","EMAIL","TERMSID","TERMNAME","CREDITLIMIT","OVERDUESILIMIT","TAX1ID","TAX1EXEMPTIONNO","SALESMANID","TYPENAME","STATUS","KATEGORICUST" custumer
+export const COLUMNS_CUSTOMER =[
+    {
+        headerName: 'PERSONNO',
+        field : 'personno',
+        width: 120,
+        pinned: 'left',
+        suppressSizeToFit: true
+    },
+    {
+        headerName: 'NAME',
+        width: 350,
+        field : 'name',
+        pinned: 'left',
+    },
+    {
+        headerName: 'ADDRESSLINE',
+        field : 'addressline1',
+        width: 180,
+        suppressSizeToFit: true,
+    },
+    {
+        headerName: 'ADDRESSLINE2',
+        field : 'addressline2',
+        width: 120,
+    },
+    {
+        headerName: 'PHONE',
+        field : 'phone',
+        width: 120,
+    },
+    {
+        headerName: 'CONTACT',
+        field : 'contact',
+        width: 120,
+    },
+    {
+        headerName: 'EMAIL',
+        field : 'email',
+        width: 120,
+        suppressSizeToFit: true
+    },
+    {
+        headerName: 'TERMSID',
+        width: 350,
+        field : 'termsid',
+    },
+    {
+        headerName: 'TERMNAME',
+        field : 'termname',
+        width: 180,
+        suppressSizeToFit: true,
+    },
+    {
+        headerName: 'CREDITLIMIT',
+        field : 'creditlimit',
+        width: 120,
+    },
+    {
+        headerName: 'OVERDUESILIMIT',
+        field : 'overduesilimit',
+        width: 120,
+    },
+    {
+        headerName: 'TAX1ID',
+        field : 'tax1id',
+        width: 120,
+    },
+    {
+        headerName: 'TAX1EXEMPTIONNO',
+        field : 'tax1exemptionno',
+        width: 120,
+        suppressSizeToFit: true
+    },
+    {
+        headerName: 'SALESMANID',
+        width: 350,
+        field : 'salesmanid',
+    },
+    {
+        headerName: 'TYPENAME',
+        field : 'typename',
+        width: 180,
+        suppressSizeToFit: true,
+    },
+    {
+        headerName: 'STATUS',
+        field : 'status',
+        width: 120,
+    },
+    {
+        headerName: 'KATEGORICUST',
+        field : 'kategoricust',
+        width: 120,
+    },
+    /* {
+        field : '',
+        headerName: 'Action',
+        cellRenderer: '',
+        width: 120,
+        pinned: 'right'
+    } */
+]
+
+// item|unit|saldo_awal|saldo_akhir|terim_bar|ret_prod|perm_prod
+

@@ -47,6 +47,9 @@ import { Tallysheet } from '../../page/forms/tallysheet/Tallysheet';
 import { CreateTallysheet } from '../../page/forms/tallysheet/CreateTallysheet';
 import { EditTallysheet } from '../../page/forms/tallysheet/EditTallysheet';
 import { PdfTallysheet } from '../../page/forms/tallysheet/PdfTallysheet';
+import { Sales } from '../../page/forms/sales/Sales';
+import { DashboardPP } from '../../page/dashboard/DashboardPP';
+import { News } from '../../page/news/News';
 
 export const MenuBar = ({setAuth}) => {
 
@@ -75,8 +78,9 @@ export const MenuBar = ({setAuth}) => {
                 <SideBar/>
                 <Routes>
                     <Route path={'/*'} index element ={<ProfilKar />} />
+                    <Route path={'/news'} index element ={<News />} />
+                    <Route path={'/dashboard'} index element ={<DashboardPP />} />
                     <Route path={"/Develop"} element={<MenuAll />} />
-                    <Route path={'/*'} index element ={<ProfilKar />} />
                     <Route path={"/Develop"} element={<MenuAll />} />
                     <Route path={"/Produksi"} element={<MenuProduksi />} />
                     <Route path={"/Purchasing"} element={<MenuPurchasing />} />
@@ -138,6 +142,9 @@ export const MenuBar = ({setAuth}) => {
                     <Route exact path={"/"+divisi+"/Tallysheet/Create"} element={<CreateTallysheet />} />
                     <Route exact path={"/"+divisi+"/Tallysheet/Preview"} element={<EditTallysheet />} />
                     <Route exact path={"/"+divisi+"/Tallysheet/PDF"} element={<PdfTallysheet />} />
+                    
+                    {/* Sales */}
+                    <Route exact path={"/"+divisi+"/Sales"} element={<Sales />} />
                 </Routes>
             </div>
         </div>
