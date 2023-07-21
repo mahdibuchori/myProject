@@ -50,6 +50,12 @@ import { PdfTallysheet } from '../../page/forms/tallysheet/PdfTallysheet';
 import { Sales } from '../../page/forms/sales/Sales';
 import { DashboardPP } from '../../page/dashboard/DashboardPP';
 import { News } from '../../page/news/News';
+import { FormOkp } from '../../page/forms/okp/FormOkp';
+import { InputOkp } from '../../page/forms/okp/InputOkp';
+import { UpdateOkp } from '../../page/forms/okp/UpdateOkp';
+import { DeleteOkp } from '../../page/forms/okp/DeleteOkp';
+import { CetakOkp } from '../../page/forms/okp/CetakOkp';
+import { KartuStock } from '../../page/forms/kartustock/KartuStock';
 
 export const MenuBar = ({setAuth}) => {
 
@@ -96,6 +102,7 @@ export const MenuBar = ({setAuth}) => {
                     <Route path={`/${divisi}/Pengadaan/Create PO`} element={<SubmitPengadaan />} />
                     <Route path={`/${divisi}/Pengadaan/Verifikasi`} element={<VerifyPengadaan />} />
                     <Route path={`/${divisi}/Pengadaan/NewCreate`} element={<CreatePo />} />
+
                      {/* DATA STOK */}
                     <Route exact path={"/"+divisi+"/STOKGUDANG"} element={<DataStok/>} />
                     <Route exact path={"/"+divisi+"/STOKGUDANG/create"} element={<InputStok />} />
@@ -105,6 +112,13 @@ export const MenuBar = ({setAuth}) => {
                     <Route exact path={"/"+divisi+"/EksternalProvider"} element={<EksternalProvider />} />
                     <Route exact path={"/"+divisi+"/EksternalProvider/Create"} element={<InputProvider />} />
                     <Route exact path={"/"+divisi+"/EksternalProvider/Update"} element={<UpdateProvider />} />
+
+                    {/*OKP */}
+                      <Route exact path={"/"+divisi+"/OKP"} element={<FormOkp />} />
+                      <Route exact path={"/"+divisi+"/OKP/Input"} element={<InputOkp />} />
+                      <Route exact path={"/"+divisi+"/OKP/Update"} element={<UpdateOkp />} />
+                      <Route exact path={"/"+divisi+"/OKP/Delete"} element={<DeleteOkp />} />
+                      <Route exact path={"/"+divisi+"/OKP/Preview"} element={<CetakOkp />} />
 
                     {/* Purchasing */}
                     <Route exact path={"/"+divisi+"/Purchasing"} element={<ListPo />} />
@@ -145,6 +159,9 @@ export const MenuBar = ({setAuth}) => {
                     
                     {/* Sales */}
                     <Route exact path={"/"+divisi+"/Sales"} element={<Sales />} />
+
+                    {/* Kartu stock */}
+                    <Route exact path={"/"+divisi+"/Kartustock"} element={<KartuStock />} />
                 </Routes>
             </div>
         </div>

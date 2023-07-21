@@ -1,0 +1,14 @@
+.kartuStockSet{
+    flex: 5;
+    margin: 50px 5px 5px 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.kartuStockSet-item-top {
+    display: flex;
+    background-color: #f1f1f1;
+    text-align: right;
+    height: 40px;
+    justify-content: space-between;
+}

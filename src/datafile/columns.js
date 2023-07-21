@@ -4,6 +4,8 @@ import { BtnPengadaan } from '../page/forms/pengadaan/BtnPengadaan';
 import { BtnSparepart } from '../page/forms/sparepart/BtnSparepart';
 import { BtnPermintaan } from '../page/forms/permintaan/BtnPermintaan';
 import { BtnProvider } from '../page/forms/eksternalProvider/BtnProvider';
+import { BtnOkp } from '../page/forms/okp/BtnOkp';
+import { BtnNoteOkp } from '../page/forms/okp/BtnNoteOkp';
 
 export const COLUMNS_GUDANG =[
     {
@@ -582,10 +584,6 @@ export const COLUMNS_STOCKCARD =[
     },
 ]
 
-// ITEMNO, ITEMDESCRIPTION, UNIT1, UNITPRICE, KATEGORI, BRAND product
-//SALESMANID","FIRSTNAME","JOBTITLE","CELLULAR","EMAIL","NOTES" sales
-////"PERSONNO","NAME","ADDRESSLINE1","ADDRESSLINE2","PHONE","CONTACT","EMAIL","TERMSID","TERMNAME","CREDITLIMIT","OVERDUESILIMIT","TAX1ID","TAX1EXEMPTIONNO","SALESMANID","TYPENAME","STATUS","KATEGORICUST" custumer
-
 export const COLUMNS_PRODUCT =[
     {
         headerName: 'ITEMNO',
@@ -620,6 +618,7 @@ export const COLUMNS_PRODUCT =[
         width: 120,
     },
 ]
+
 export const COLUMNS_SALES =[
     {
         headerName: 'SALESMANID',
@@ -661,7 +660,7 @@ export const COLUMNS_SALES =[
         pinned: 'right'
     } */
 ]
-////"PERSONNO","NAME","ADDRESSLINE1","ADDRESSLINE2","PHONE","CONTACT","EMAIL","TERMSID","TERMNAME","CREDITLIMIT","OVERDUESILIMIT","TAX1ID","TAX1EXEMPTIONNO","SALESMANID","TYPENAME","STATUS","KATEGORICUST" custumer
+
 export const COLUMNS_CUSTOMER =[
     {
         headerName: 'PERSONNO',
@@ -765,5 +764,91 @@ export const COLUMNS_CUSTOMER =[
     } */
 ]
 
-// item|unit|saldo_awal|saldo_akhir|terim_bar|ret_prod|perm_prod
+export const COLUMNS_OKP =[
+    {
+        headerName: 'No',
+        field : 'no',
+        width: 75,
+        suppressSizeToFit: true,
+        colSpan: function (params) {
+            const no = params.data.no;
+            if (no === 'Total') {
+              // have all Russia age columns width 2
+              return 3;
+            }else {
+              // all other rows should be just normal
+              return 1;
+            }
+        },
+    },
+    {
+        headerName: 'KODE OKP',
+        width: 180,
+        field : 'kodeOKP',
+    },
+    {
+        headerName: 'Nama Produk',
+        field : 'produk',
+        width: 350,
+        suppressSizeToFit: true,
+    },
+    {
+        headerName: 'Jumlah (batch)',
+        field : 'batch',
+        width: 120,
+    },
+    {
+        headerName: 'Varian Packing',
+        field : 'varian',
+        width: 120,
+        colSpan: function (params) {
+            const varian = params.data.varian;
+            if (varian === '' || varian === null) {
+              // have all Russia age columns width 2
+              return 3;
+            }else {
+              // all other rows should be just normal
+              return 1;
+            }
+        },
+    },
+    {
+        headerName: 'REVISI',
+        field : 'revisi',
+        width: 100,
+    },
+    {
+        field : '',
+        headerName: 'Action',
+        cellRenderer: BtnOkp,
+        width: 120,
+        pinned: 'right'
+    }
+]
 
+export const COLUMNS_OKPNOTE =[
+    {
+        headerName: '',
+        field : 'no',
+        width: 150,
+    },
+    {
+        headerName: 'Note',
+        width: 500,
+        field : 'note',
+    },
+    {
+        field : '',
+        headerName: 'Action',
+        cellRenderer: BtnNoteOkp,
+        width: 120,
+        pinned: 'right'
+    }
+    // {
+    //     field : '',
+    //     headerName: 'Action',
+    //     // cellRenderer: BtnStok,
+    //     width: 120,
+    //     pinned: 'right'
+    // }
+]

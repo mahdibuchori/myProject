@@ -347,7 +347,7 @@ export const ViewPermintaan = () => {
                 
                 <Form>
                     <Row>
-                        <div className="col-md-4 mb-1">
+                        <div className="col-md-3 mb-1">
                             <Card>
                                 <Card.Body>
                                     <div className="row">
@@ -424,7 +424,7 @@ export const ViewPermintaan = () => {
                                 </Card.Body>
                             </Card>
                         </div>
-                        <div className="col-md-8 mb-1">
+                        <div className="col-md-7 mb-1">
                             <Card className='mb-3'>
                                 <Card.Body>
                                 <div className="row mb-1">
@@ -594,7 +594,11 @@ export const ViewPermintaan = () => {
                                 }
                                 </Card.Body>
                             </Card>
-                            <div style={{display: 'flex', justifyContent:'flex-end', width: '100', marginBottom: "50px"}}>
+                            
+                        </div>
+                        
+                        <div className="col-md-2 mb-5">
+                            <Card className='mb-2'>
                                 <Button 
                                     variant="outline-danger"
                                     className='m-2'
@@ -603,6 +607,8 @@ export const ViewPermintaan = () => {
                                 >
                                     Pengajuan
                                 </Button>
+                            </Card>
+                            <Card className='mb-2'>
                                 <Button 
                                     variant="outline-primary"
                                     className='m-2'
@@ -611,6 +617,8 @@ export const ViewPermintaan = () => {
                                 >
                                     Verifikasi
                                 </Button>
+                            </Card>
+                            <Card className='mb-2'>
                                 <Button 
                                     variant="outline-warning"
                                     className='m-2'
@@ -619,6 +627,8 @@ export const ViewPermintaan = () => {
                                 >
                                     Form Proses
                                 </Button> 
+                            </Card>
+                            <Card className='mb-2'>
                                 <Button 
                                     variant="outline-dark"
                                     className='m-2'
@@ -627,7 +637,7 @@ export const ViewPermintaan = () => {
                                 >
                                     Batal
                                 </Button> 
-                            </div> 
+                            </Card>
                             
                         </div>
                     </Row>

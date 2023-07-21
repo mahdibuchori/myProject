@@ -1,0 +1,29 @@
+.okpSet{
+    flex: 5;
+    margin: 50px 5px 5px 5px;
+    padding: 5px 5px 5px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.okp-view{
+    flex: 5;
+    margin: 50px 5px 5px 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.okpSet-item-top {
+    display: flex;
+    background-color: #f1f1f1;
+    text-align: left;
+    height: 40px;
+    justify-content: space-between;
+}
+.okpSet-item-once {
+    display: flex;
+    background-color: #f1f1f1;
+    text-align: right;
+    height: 40px;
+    justify-content: space-between;
+}
