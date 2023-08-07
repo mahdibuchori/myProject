@@ -1,30 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PurchLine } from './PurchLine';
-import { PurchBatang } from './PurchBatang';
+import { WeaklyPurch } from './WeaklyPurch';
 import './dashboard.css';
-// import { Breadcrumb, Container, Form, Stack } from 'react-bootstrap';
-import { Container, Form } from 'react-bootstrap';
+import Select from 'react-select';
+  
+import { Breadcrumb, Container, Form, Stack } from 'react-bootstrap';
 import { LoadingPage } from '../../LoadingPage/LoadingPage';
 import useAuthStore, { selectUser } from '../../store/authLogin';
+import useDashboardStore, {selectDashboard,selectFetchDashboard,selectDashboardReady} from '../../store/dataDashboard';
 import usePengadaanStore, {selectPengadaan, selectFetchPengadaan, selectPengadaanReady, selectFalsePengadaan} from '../../store/pengadaanBarang';
+import { MonthlyPurch } from './MonthlyPurch';
+import { ParetoPurch } from './ParetoPurch';
 
 export const DashboardPP = () => {
     const navigate = useNavigate();
     const userData = useAuthStore(selectUser);
-
+    const onDashboard = useDashboardStore(selectFetchDashboard);
+    const dataDashboard = useDashboardStore(selectDashboard);
+    const dashboardReady = useDashboardStore(selectDashboardReady);
     const newPengadaan = usePengadaanStore(selectPengadaan);
     const fetchPengadaan = usePengadaanStore(selectFetchPengadaan);
     const pengadaanReady = usePengadaanStore(selectPengadaanReady);
     const pengadaanFalse = usePengadaanStore(selectFalsePengadaan);
-
+    
+    const [nabar, setNabar] = useState('');
     const [month, setMonth] = useState();
     const [jmlPengajuan, setJmlPengajuan] = useState(0);
     const [jmlRevisi, setJmlRevisi] = useState(0);
     const [jmlVerify, setJmlVerify] = useState(0);
     const [jmlSelesai, setJmlSelesai] = useState(0);
+
+    const [item, setItem] = useState([]);
     
     const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => { 
+        setIsLoading(true);
+        onDashboard()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        if (!dashboardReady) return;
+        onGridReady(0)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dashboardReady]);
 
     useEffect(() => { 
         setIsLoading(true);
@@ -46,6 +66,27 @@ export const DashboardPP = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pengadaanReady]);
 
+    const onGridReady = (x) =>{
+        setIsLoading(false); 
+        const data = dataDashboard.data;
+        const resultItem = data.filter((v,i,a)=>a.findIndex(v2=>(v2.item===v.item))===i);
+         let material = resultItem.map(d => { 
+            return {value:  d.item.trim(), label: d.item.trim()}
+         });
+        setItem(material)
+        if(material.length > 0){
+            let nama = material[0].value;
+            if(nama === undefined){
+                setNabar()
+            }
+            else{
+                setNabar(nama)
+            }
+
+
+        }
+    }
+
     const onDataReady = () =>{
         setIsLoading(false)
         console.log(newPengadaan)
@@ -60,6 +101,10 @@ export const DashboardPP = () => {
         setJmlSelesai(jumSelesai.length);
     }
 
+    const handleSelect = (e) =>{
+        setNabar(e.value)
+    }
+
     const onSetDate =async (event) => {
         setIsLoading(true)
         pengadaanFalse();
@@ -71,116 +116,131 @@ export const DashboardPP = () => {
         navigate(e);
     }
 
-
-  return (
-    <>
-    <div className='dashboard'>
-        {/* <Stack direction="horizontal" gap={3} style={{padding: "0px 10px 0px 10px"}}>
-            <div>
-                <Breadcrumb className="m-2">
-                    <Breadcrumb.Item active>Dashboard</Breadcrumb.Item>
-                </Breadcrumb>
-            </div>
-            <div className=" ms-auto"></div>
-            <div>
-                
-            </div>
-        </Stack> */}
-
-        <Container className='mt-2' fluid>
-            <div className='row'>
-                <div className='col-xl-4 col-lg-4 mb-2'>
-                    <div class="d-flex align-items-center justify-content-between mb-2">
-                        <h6 className=''>Pengadan Barang</h6>
-                        <Form.Control
-                            type="month"
-                            className='text-center border border-primary text-primary'
-                            value={month}
-                            min="2020-08"
-                            onChange={(e) =>onSetDate(e)}
-                        />
-
-                    </div>
+    return (
+        <>
+        <div className='dashboard'>
+            <Stack direction="horizontal" gap={3} style={{padding: "0px 10px 0px 10px"}}>
+                <div>
+                    <Breadcrumb className="m-2">
+                        <Breadcrumb.Item active>Dashboard</Breadcrumb.Item>
+                    </Breadcrumb>
+                </div>
+                <div className=" ms-auto"></div>
+                <div>
+                    
+                </div>
+            </Stack>
+    
+            <Container className='mt-0' fluid>
+                <div className='row'>
+                    <div className='col-xl-9 col-lg-9 mb-2'>
                     <div className='row'>
-                        <div className='col-sm-6'>
-                            <div className='widget-flat card-h-50 card'>
-                                <div className='card-body'>
-                                    <div className='float-end text-danger'>
-                                        <i class="bi bi-arrow-right-square"></i>
-                                    </div>
-                                    <h6 className='fw-normal mt-0 text-muted'>Pengajuan </h6>
-                                    <h3 className='mt-3 mb-3 float-end'>{jmlPengajuan}</h3>
-                                </div>
-                            </div>
+                        <div className='col-xl-4 col-lg-4'>
+                            <h6 className='mt-3 mb-3 float-end text-dark'>Nama Item : </h6>
                         </div>
-
-                        <div className='col-sm-6'>
-                            <div className='widget-flat card'>
-                                <div className='card-body'>
-                                    <div className='float-end text-warning'>
-                                        <i className="bi bi-recycle"></i>
-                                    </div>
-                                    <h6 className='fw-normal mt-0 text-muted'>Revisi</h6>
-                                    <h3 className='mt-3 mb-3 float-end'>{jmlRevisi}</h3>
-                                </div>
-                            </div>
+                        <div className='col-xl-8 col-lg-8'>
+                            <Select
+                                className="basic-single"
+                                classNamePrefix="select"
+                                defaultValue={[{value:'',label:''}]}
+                                isClearable={false}
+                                isSearchable={true}
+                                name="color"
+                                options={item}
+                                onChange={e => handleSelect(e)}
+                            />
+                        </div>
+                    
+                        <div className='col-xl-6 col-lg-6 mb-2'>
+                            <WeaklyPurch name={nabar}/>
+                        </div>
+                        <div className='col-xl-6 col-lg-6 mb-2'>
+                            <MonthlyPurch name={nabar}/>
                         </div>
                     </div>
-                    <div className='row mt-2'>
-                        <div className='col-sm-6'>
-                            <div className='widget-flat card'>
-                                <div className='card-body'>
-                                    <div className='float-end text-primary'>
-                                        <i className="bi bi-check2-circle"></i>
-                                    </div>
-                                    <h6 className='fw-normal mt-0 text-muted'>Verifikasi</h6>
-                                    <h3 className='mt-3 mb-3 float-end'>{jmlVerify}</h3>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div className='col-sm-6'>
-                            <div className='widget-flat card'>
-                                <div className='card-body'>
-                                    <div className='float-end text-success'>
-                                        <i className="bi bi-truck"></i>
-                                    </div>
-                                    <h6 className='fw-normal mt-0 text-muted'>Selesai</h6>
-                                    <h3 className='mt-3 mb-3 float-end'>{jmlSelesai}</h3>
-                                </div>
-                            </div>
-                        </div>
+                    
                     </div>
-                    <h6 
-                        className='mt-3 mb-3 float-end text-primary mylinkBo' 
-                        style={{borderBottom : '2px solid #287bff'}} 
-                        onClick={() =>pergiKe(`/main/${userData.user_divisi}/Pengadaan`)}>
-                        pergi ke pengadaan
-                        <i className="bi bi-arrow-right-short"></i>
-                    </h6>
-                    
-                    
+                    <div className='col-xl-3 col-lg-3 mb-2'>
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <h6 className=''>Pengadan Barang</h6>
+                            <Form.Control
+                                type="month"
+                                className='text-center border border-primary text-primary'
+                                value={month}
+                                min="2020-08"
+                                onChange={(e) =>onSetDate(e)}
+                            />
+    
+                        </div>
+                        <div className='row'>
+                            <div className='col-sm-6'>
+                                <div className='widget-flat card card'>
+                                    <div className='card-body'>
+                                        <div className='float-end text-danger'>
+                                            <i class="bi bi-arrow-right-square"></i>
+                                        </div>
+                                        <h6 className='fw-normal mt-0 text-muted'>Pengajuan </h6>
+                                        <h3 className='mt-1 mb-0 float-end'>{jmlPengajuan}</h3>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div className='col-sm-6'>
+                                <div className='widget-flat card'>
+                                    <div className='card-body'>
+                                        <div className='float-end text-warning'>
+                                            <i className="bi bi-recycle"></i>
+                                        </div>
+                                        <h6 className='fw-normal mt-0 text-muted'>Revisi</h6>
+                                        <h3 className='mt-1 mb-0 float-end'>{jmlRevisi}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='row mt-2'>
+                            <div className='col-sm-6'>
+                                <div className='widget-flat card'>
+                                    <div className='card-body'>
+                                        <div className='float-end text-primary'>
+                                            <i className="bi bi-check2-circle"></i>
+                                        </div>
+                                        <h6 className='fw-normal mt-0 text-muted'>Verifikasi</h6>
+                                        <h3 className='mt-1 mb-0 float-end'>{jmlVerify}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className='col-sm-6'>
+                                <div className='widget-flat card'>
+                                    <div className='card-body'>
+                                        <div className='float-end text-success'>
+                                            <i className="bi bi-truck"></i>
+                                        </div>
+                                        <h6 className='fw-normal mt-0 text-muted'>Selesai</h6>
+                                        <h3 className='mt-1 mb-0 float-end'>{jmlSelesai}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='col-sm-12'>
+                                <h6 
+                                    className='mt-3 mb-3 float-end text-primary mylinkBo' 
+                                    style={{borderBottom : '2px solid #287bff'}} 
+                                    onClick={() =>pergiKe(`/main/${userData.user_divisi}/Pengadaan`)}>
+                                    pergi ke pengadaan
+                                    <i className="bi bi-arrow-right-short"></i>
+                                </h6>
+                            </div>
+                        </div>
+                        <ParetoPurch />
+                    </div>
                 </div>
                 
-                <div className='col-xl-8 col-lg-8'>
-                    <PurchBatang/>
-                </div>
-            </div>
-            <div className='row mt-2'>
-                <div className='col-xl-8 col-lg-8 mb-2'>
-                    <PurchLine/>
-                </div>
-                <div className='col-xl-6 col-lg-6 mb-2'>
                 
-                </div>
-                
-            </div>
-            
-        </Container>
-
-    </div>
-
-    {isLoading ? <LoadingPage/> : ""}
-    </>
-  )
+            </Container>
+    
+        </div>
+    
+        {isLoading ? <LoadingPage/> : ""}
+        </>
+      )
 }
