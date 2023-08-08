@@ -11,8 +11,6 @@ export const ParetoPurch = () => {
     const dashboardReady = useDashboardStore(selectYdashReady);
 
     const [month, setMonth] = useState();
-    const [bulan, setBulan] = useState('');
-    const [tahun, setTahun] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [fileName, setFileName] = useState([]);
 
@@ -23,8 +21,6 @@ export const ParetoPurch = () => {
         const year = date.getFullYear();
         let bb = String(month).padStart(2, '0');
         setMonth(`${year}-${bb}`);
-        setBulan(bb)
-        setTahun(year)
         onDashboard()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -37,97 +33,10 @@ export const ParetoPurch = () => {
 
     const onGridReady = (x) =>{
         setIsLoading(false); 
-        const data = dataDashboard.data;
-        const postIds = data.map((post) => {
-            let file = {};
-            if(parseInt(bulan) === 1){
-                file = post.januari
-            }
-            else if(parseInt(bulan) === 2){
-                file = post.februari
-            }
-            else if(parseInt(bulan) === 3){
-                file = post.maret
-            }
-            else if(parseInt(bulan) === 4){
-                file = post.april
-            }
-            else if(parseInt(bulan) === 5){
-                file = post.mei
-            }
-            else if(parseInt(bulan) === 6){
-                file = post.juni
-            }
-            else if(parseInt(bulan) === 7){
-                file = post.juli
-            }
-            else if(parseInt(bulan) === 8){
-                file = post.agustus
-            }
-            else if(parseInt(bulan) === 9){
-                file = post.september
-            }
-            else if(parseInt(bulan) === 10){
-                file = post.oktober
-            }
-            else if(parseInt(bulan) === 11){
-                file = post.januari
-            }
-            else if(parseInt(bulan) === 1){
-                file = post.november
-            }
-            else{
-                file = post.desember
-            }
-            return(
-                {item: post.item, th23 : file.th23, th22 : file.th22, th21 : file.th21, qth23 : file.qth23, qth22 : file.qth22, qth21 : file.qth21}
-            )
-        });
-        console.log(tahun)
-
-        let nilai = {}
-        if(tahun === 2023){
-            nilai = postIds.sort(function(a, b) {
-                return b.qth23 - a.qth23;
-            });
-        }
-        else if(tahun === 2022){
-            nilai = postIds.sort(function(a, b) {
-                return b.qth22 - a.qth22;
-            });
-        }
-        else{
-            nilai = postIds.sort(function(a, b) {
-                return b.qth21 - a.qth21;
-            });
-        }
-        console.log(nilai)
-        let datas = [];
-        for(let x= 0; x < 10; x++){
-            if(tahun === 2023){
-                datas.push({item: nilai[x].item, harga : nilai[x].th23 , qty : nilai[x].qth23})
-            }
-            else if(tahun === 2022){
-                datas.push({item: nilai[x].item, harga : nilai[x].th22 , qty : nilai[x].qth22})
-            }
-            else{
-                datas.push({item: nilai[x].item, harga : nilai[x].th21 , qty : nilai[x].qth21})
-            }
-            
-        }
-
-        setFileName(datas);
-        
-    }
-
-    const onSetDate =async (event) => {
-        setMonth(event.target.value);
-        const date = new Date(event.target.value);
+        const date = new Date();
         const month = date.getMonth() + 1;
         const year = date.getFullYear();
         let bb = String(month).padStart(2, '0');
-        setBulan(bb)
-        setTahun(year)
         const data = dataDashboard.data;
         const postIds = data.map((post) => {
             let file = {};
@@ -162,19 +71,15 @@ export const ParetoPurch = () => {
                 file = post.oktober
             }
             else if(parseInt(bb) === 11){
-                file = post.januari
-            }
-            else if(parseInt(bb) === 1){
                 file = post.november
             }
             else{
                 file = post.desember
             }
             return(
-                {item: post.item, th23 : file.th23, th22 : file.th22, th21 : file.th21, qth23 : parseInt(file.qth23), qth22 : parseInt(file.qth22), qth21 : (parseInt(file.qth21))}
+                {item: post.item, th23 : file.th23, th22 : file.th22, th21 : file.th21, qth23 : parseInt(file.qth23), qth22 : parseInt(file.qth22), qth21 : parseInt(file.qth21)}
             )
         });
-        console.log(tahun)
 
         let nilai = {}
         if(year === 2023){
@@ -193,7 +98,91 @@ export const ParetoPurch = () => {
             });
         }
         
-        console.log(nilai)
+        let datas = [];
+        for(let x= 0; x < 10; x++){
+            if(year === 2023){
+                datas.push({item: nilai[x].item, harga : nilai[x].th23 , qty : nilai[x].qth23})
+            }
+            else if(year === 2022){
+                datas.push({item: nilai[x].item, harga : nilai[x].th22 , qty : nilai[x].qth22})
+            }
+            else{
+                datas.push({item: nilai[x].item, harga : nilai[x].th21 , qty : nilai[x].qth21})
+            }
+            
+        }
+
+        setFileName(datas);
+        
+    }
+
+    const onSetDate =async (event) => {
+        setMonth(event.target.value);
+        const date = new Date(event.target.value);
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        let bb = String(month).padStart(2, '0');
+        const data = dataDashboard.data;
+        const postIds = data.map((post) => {
+            let file = {};
+            if(parseInt(bb) === 1){
+                file = post.januari
+            }
+            else if(parseInt(bb) === 2){
+                file = post.februari
+            }
+            else if(parseInt(bb) === 3){
+                file = post.maret
+            }
+            else if(parseInt(bb) === 4){
+                file = post.april
+            }
+            else if(parseInt(bb) === 5){
+                file = post.mei
+            }
+            else if(parseInt(bb) === 6){
+                file = post.juni
+            }
+            else if(parseInt(bb) === 7){
+                file = post.juli
+            }
+            else if(parseInt(bb) === 8){
+                file = post.agustus
+            }
+            else if(parseInt(bb) === 9){
+                file = post.september
+            }
+            else if(parseInt(bb) === 10){
+                file = post.oktober
+            }
+            else if(parseInt(bb) === 11){
+                file = post.november
+            }
+            else{
+                file = post.desember
+            }
+            return(
+                {item: post.item, th23 : file.th23, th22 : file.th22, th21 : file.th21, qth23 : parseInt(file.qth23), qth22 : parseInt(file.qth22), qth21 : (parseInt(file.qth21))}
+            )
+        });
+
+        let nilai = {}
+        if(year === 2023){
+            nilai = postIds.sort(function(a, b) {
+                return b.qth23 - a.qth23;
+            });
+        }
+        else if(year === 2022){
+            nilai = postIds.sort(function(a, b) {
+                return b.qth22 - a.qth22;
+            });
+        }
+        else{
+            nilai = postIds.sort(function(a, b) {
+                return b.qth21 - a.qth21;
+            });
+        }
+        
         let datas = [];
         for(let x= 0; x < 10; x++){
             if(year === 2023){
@@ -229,7 +218,6 @@ export const ParetoPurch = () => {
         <div>
 
             {fileName.map((e, i) =>{
-                console.log(e)
                     return(
                         <ListGroup as="ol">
                             <ListGroup.Item
@@ -245,7 +233,6 @@ export const ParetoPurch = () => {
                                 </Badge>
                             </ListGroup.Item>
                         </ListGroup>
-                        // console.log(e.item)
                     )
                 }
                 )}

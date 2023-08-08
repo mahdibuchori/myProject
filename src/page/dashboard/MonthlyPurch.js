@@ -224,7 +224,7 @@ export const MonthlyPurch = (props) => {
         responsive: true,
         plugins: {
           legend: {
-            position: 'right',
+            position: 'bottom',
           },
           title: {
             display: false,

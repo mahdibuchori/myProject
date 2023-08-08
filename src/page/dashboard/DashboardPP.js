@@ -7,7 +7,7 @@ import Select from 'react-select';
 import { Breadcrumb, Container, Form, Stack } from 'react-bootstrap';
 import { LoadingPage } from '../../LoadingPage/LoadingPage';
 import useAuthStore, { selectUser } from '../../store/authLogin';
-import useDashboardStore, {selectDashboard,selectFetchDashboard,selectDashboardReady} from '../../store/dataDashboard';
+import useDashboardStore, { selectYdash, selectFetchYdash, selectYdashReady } from '../../store/dataDashboard';
 import usePengadaanStore, {selectPengadaan, selectFetchPengadaan, selectPengadaanReady, selectFalsePengadaan} from '../../store/pengadaanBarang';
 import { MonthlyPurch } from './MonthlyPurch';
 import { ParetoPurch } from './ParetoPurch';
@@ -15,9 +15,11 @@ import { ParetoPurch } from './ParetoPurch';
 export const DashboardPP = () => {
     const navigate = useNavigate();
     const userData = useAuthStore(selectUser);
-    const onDashboard = useDashboardStore(selectFetchDashboard);
-    const dataDashboard = useDashboardStore(selectDashboard);
-    const dashboardReady = useDashboardStore(selectDashboardReady);
+    
+    const onDashboard = useDashboardStore(selectFetchYdash);
+    const dataDashboard = useDashboardStore(selectYdash);
+    const dashboardReady = useDashboardStore(selectYdashReady);
+
     const newPengadaan = usePengadaanStore(selectPengadaan);
     const fetchPengadaan = usePengadaanStore(selectFetchPengadaan);
     const pengadaanReady = usePengadaanStore(selectPengadaanReady);
@@ -74,6 +76,7 @@ export const DashboardPP = () => {
             return {value:  d.item.trim(), label: d.item.trim()}
          });
         setItem(material)
+        console.log(material)
         if(material.length > 0){
             let nama = material[0].value;
             if(nama === undefined){
