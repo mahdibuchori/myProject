@@ -137,33 +137,6 @@ export const DashboardPP = () => {
             <Container className='mt-0' fluid>
                 <div className='row'>
                     <div className='col-xl-9 col-lg-9 mb-2'>
-                    <div className='row'>
-                        <div className='col-xl-4 col-lg-4'>
-                            <h6 className='mt-3 mb-3 float-end text-dark'>Nama Item : </h6>
-                        </div>
-                        <div className='col-xl-8 col-lg-8'>
-                            <Select
-                                className="basic-single"
-                                classNamePrefix="select"
-                                defaultValue={[{value:'',label:''}]}
-                                isClearable={false}
-                                isSearchable={true}
-                                name="color"
-                                options={item}
-                                onChange={e => handleSelect(e)}
-                            />
-                        </div>
-                    
-                        <div className='col-xl-6 col-lg-6 mb-2'>
-                            <WeaklyPurch name={nabar}/>
-                        </div>
-                        <div className='col-xl-6 col-lg-6 mb-2'>
-                            <MonthlyPurch name={nabar}/>
-                        </div>
-                    </div>
-                    
-                    </div>
-                    <div className='col-xl-3 col-lg-3 mb-2'>
                         <div class="d-flex align-items-center justify-content-between mb-2">
                             <h6 className=''>Pengadan Barang</h6>
                             <Form.Control
@@ -173,10 +146,10 @@ export const DashboardPP = () => {
                                 min="2020-08"
                                 onChange={(e) =>onSetDate(e)}
                             />
-    
+
                         </div>
                         <div className='row'>
-                            <div className='col-sm-6'>
+                            <div className='col-xl-3 col-lg-3 mb-2'>
                                 <div className='widget-flat card card'>
                                     <div className='card-body'>
                                         <div className='float-end text-danger'>
@@ -187,8 +160,7 @@ export const DashboardPP = () => {
                                     </div>
                                 </div>
                             </div>
-    
-                            <div className='col-sm-6'>
+                            <div className='col-xl-3 col-lg-3 mb-2'>
                                 <div className='widget-flat card'>
                                     <div className='card-body'>
                                         <div className='float-end text-warning'>
@@ -199,9 +171,7 @@ export const DashboardPP = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className='row mt-2'>
-                            <div className='col-sm-6'>
+                            <div className='col-xl-3 col-lg-3 mb-2'>
                                 <div className='widget-flat card'>
                                     <div className='card-body'>
                                         <div className='float-end text-primary'>
@@ -212,8 +182,7 @@ export const DashboardPP = () => {
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div className='col-sm-6'>
+                            <div className='col-xl-3 col-lg-3 mb-2'>
                                 <div className='widget-flat card'>
                                     <div className='card-body'>
                                         <div className='float-end text-success'>
@@ -224,6 +193,7 @@ export const DashboardPP = () => {
                                     </div>
                                 </div>
                             </div>
+
                             <div className='col-sm-12'>
                                 <h6 
                                     className='mt-3 mb-3 float-end text-primary mylinkBo' 
@@ -233,7 +203,34 @@ export const DashboardPP = () => {
                                     <i className="bi bi-arrow-right-short"></i>
                                 </h6>
                             </div>
+
                         </div>
+                        <div className='row'>
+                            <div className='col-xl-4 col-lg-4'>
+                                <h6 className='mt-3 mb-3 float-end text-dark'>Nama Item : </h6>
+                            </div>
+                            <div className='col-xl-8 col-lg-8'>
+                                <Select
+                                    className="basic-single"
+                                    classNamePrefix="select"
+                                    defaultValue={[{value:'',label:''}]}
+                                    isClearable={false}
+                                    isSearchable={true}
+                                    name="color"
+                                    options={item}
+                                    onChange={e => handleSelect(e)}
+                                />
+                            </div>
+                        
+                            <div className='col-xl-6 col-lg-6 mb-2'>
+                                <WeaklyPurch name={nabar}/>
+                            </div>
+                            <div className='col-xl-6 col-lg-6 mb-2'>
+                                <MonthlyPurch name={nabar}/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='col-xl-3 col-lg-3 mb-2'>
                         <ParetoPurch />
                     </div>
                 </div>
