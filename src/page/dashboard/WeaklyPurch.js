@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './dashboard.css';
+// import Swal from "sweetalert2";
 import {
     Chart as ChartJS,
     LinearScale,
@@ -131,50 +132,55 @@ export const WeaklyPurch = (props) => {
         }
         else{
             setNabar(props.name)
-            const data = dataDashboard.data;
-            let listData =  data.filter((d) => d.item === props.name);
-            let dWeek1 = listData.map((d)=>{
-                let nilai = 0
-                if(d.week1 === ''){nilai = 0}else{ nilai = parseFloat(d.week1)}
-                return(
-                    nilai
-                )
-            })
-            let dWeek2 = listData.map((d)=>{
-                let nilai = 0
-                if(d.week2 === ''){nilai = 0}else{ nilai = parseFloat(d.week2)}
-                return(
-                    nilai
-                )
-            })
-            
-            let dWeek3 = listData.map((d)=>{
-                let nilai = 0
-                if(d.week3 === ''){nilai = 0}else{ nilai = parseFloat(d.week3)}
-                return(
-                    nilai
-                )
-            })
-            
-            let dWeek4 = listData.map((d)=>{
-                let nilai = 0;
-                if(d.week4 === ''){nilai = 0}else{ nilai = parseFloat(d.week4)}
-                return(
-                    nilai
-                )
-            })
-            let dAvg = listData.map((d)=>{
-                let nilai = 0;
-                if(d.avg === ''){nilai = 0}else{ nilai = parseFloat(d.avg)}
-                return(
-                    nilai
-                )
-            })
-            setWeek1(dWeek1);
-            setWeek2(dWeek2);
-            setWeek3(dWeek3);
-            setWeek4(dWeek4);
-            setAvg(dAvg);
+            try {
+              const data = dataDashboard.data;
+              let listData =  data.filter((d) => d.item === props.name);
+              let dWeek1 = listData.map((d)=>{
+                  let nilai = 0
+                  if(d.week1 === ''){nilai = 0}else{ nilai = parseFloat(d.week1)}
+                  return(
+                      nilai
+                  )
+              })
+              let dWeek2 = listData.map((d)=>{
+                  let nilai = 0
+                  if(d.week2 === ''){nilai = 0}else{ nilai = parseFloat(d.week2)}
+                  return(
+                      nilai
+                  )
+              })
+              
+              let dWeek3 = listData.map((d)=>{
+                  let nilai = 0
+                  if(d.week3 === ''){nilai = 0}else{ nilai = parseFloat(d.week3)}
+                  return(
+                      nilai
+                  )
+              })
+              
+              let dWeek4 = listData.map((d)=>{
+                  let nilai = 0;
+                  if(d.week4 === ''){nilai = 0}else{ nilai = parseFloat(d.week4)}
+                  return(
+                      nilai
+                  )
+              })
+              let dAvg = listData.map((d)=>{
+                  let nilai = 0;
+                  if(d.avg === ''){nilai = 0}else{ nilai = parseFloat(d.avg)}
+                  return(
+                      nilai
+                  )
+              })
+              setWeek1(dWeek1);
+              setWeek2(dWeek2);
+              setWeek3(dWeek3);
+              setWeek4(dWeek4);
+              setAvg(dAvg);
+            } catch (error) {
+              // Swal.fire('Opsss..','Terjadi Kesalahan Harap Refresh Page','error');
+              console.log(error)
+            }
         }
         
     }
