@@ -3,15 +3,26 @@ import create from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { API_GSHEET } from '../apis/apisData';
+
 const initialDashboard = [];
 const initialYearDash = [];
+const initialFinishgood = [];
+const initialPpic = [];
+const initialWip = [];
+
 const useDashboardStore = create(
     persist(
         (set) => ({
             dashboard: initialDashboard,
             yDash: initialYearDash,
+            dashFg : initialFinishgood,
+            dashPpic : initialPpic,
+            dashWip : initialWip,
             dashboardReady: false,
             yDashReady: false,
+            fgReady: false,
+            ppicReady: false,
+            wipReady: false,
             fetchDashboard : async () => {
                 let date = new Date()
                 try {
@@ -55,6 +66,48 @@ const useDashboardStore = create(
                     console.log(error);
                 }
             },
+            fetchDashFg : async () => {
+                let date = new Date()
+                try {
+                    const { data } = await API_GSHEET.get(`exec?tipe=reportFinishGood&date=${date}`);
+                    set(produce((state) => {
+                        state.dashFg = data;
+                        state.fgReady = true;
+                    }))
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            falseDashFg : async () => {
+                try {
+                    set(produce((state) => {
+                        state.fgReady = false;
+                    }))
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            fetchDashPpic : async () => {
+                let date = new Date()
+                try {
+                    const { data } = await API_GSHEET.get(`exec?tipe=reportPpic&date=${date}`);
+                    set(produce((state) => {
+                        state.dashPpic = data;
+                        state.ppicReady = true;
+                    }))
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            falseDashPpic : async () => {
+                try {
+                    set(produce((state) => {
+                        state.ppicReady = false;
+                    }))
+                } catch (error) {
+                    console.log(error);
+                }
+            },
         }),
         {
             name: 'dashboard-storage',
@@ -72,5 +125,15 @@ export const selectYdash = (state) => state.yDash;
 export const selectFetchYdash = (state) => state.fetchYdash;
 export const selectYdashReady = (state) => state.yDashReady;
 export const selectFalseYdash = (state) => state.falseYdash;
+
+export const selectDashFg = (state) => state.dashFg;
+export const selectfetchDashFg = (state) => state.fetchDashFg;
+export const selectFgReady = (state) => state.fgReady;
+export const selectFalseDashFg = (state) => state.falseDashFg;
+
+export const selectDashPpic = (state) => state.dashPpic;
+export const selectFetchDashPpic = (state) => state.fetchDashPpic;
+export const selectPpicReady = (state) => state.ppicReady;
+export const selectFalseDashPpic = (state) => state.falseDashPpic;
 
 export default useDashboardStore;

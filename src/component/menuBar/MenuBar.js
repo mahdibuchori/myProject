@@ -48,7 +48,6 @@ import { CreateTallysheet } from '../../page/forms/tallysheet/CreateTallysheet';
 import { EditTallysheet } from '../../page/forms/tallysheet/EditTallysheet';
 import { PdfTallysheet } from '../../page/forms/tallysheet/PdfTallysheet';
 import { Sales } from '../../page/forms/sales/Sales';
-import { DashboardPP } from '../../page/dashboard/DashboardPP';
 import { News } from '../../page/news/News';
 import { FormOkp } from '../../page/forms/okp/FormOkp';
 import { InputOkp } from '../../page/forms/okp/InputOkp';
@@ -56,6 +55,10 @@ import { UpdateOkp } from '../../page/forms/okp/UpdateOkp';
 import { DeleteOkp } from '../../page/forms/okp/DeleteOkp';
 import { CetakOkp } from '../../page/forms/okp/CetakOkp';
 import { KartuStock } from '../../page/forms/kartustock/KartuStock';
+import { DashboardMenu } from '../../page/dashboard/DashboardMenu';
+import { DashboardFg } from '../../page/dashboard/Finishgood/DashboardFg';
+import { DashboardPPIC } from '../../page/dashboard/PPIC/DashboardPPIC';
+import { DashboardWIP } from '../../page/dashboard/WIP/DashboardWIP';
 
 export const MenuBar = ({setAuth}) => {
 
@@ -85,8 +88,10 @@ export const MenuBar = ({setAuth}) => {
                 <Routes>
                     <Route path={'/*'} index element ={<ProfilKar />} />
                     <Route path={'/news'} index element ={<News />} />
-                    <Route path={'/dashboard'} index element ={<DashboardPP />} />
-                    <Route path={"/Develop"} element={<MenuAll />} />
+                    <Route path={'/dashboard'} index element ={<DashboardMenu />} />
+                    <Route path={'/dashboard/Finishgood'} element ={<DashboardFg />} />
+                    <Route path={'/dashboard/PPIC'} element ={<DashboardPPIC />} />
+                    <Route path={'/dashboard/WIP'} element ={<DashboardWIP />} />
                     <Route path={"/Develop"} element={<MenuAll />} />
                     <Route path={"/Produksi"} element={<MenuProduksi />} />
                     <Route path={"/Purchasing"} element={<MenuPurchasing />} />

@@ -18,3 +18,21 @@
     cursor: pointer;
 }
 
+.moys{
+    cursor: pointer;
+}
+
+.moys:hover{
+    color: blue;
+    border-bottom: 2px solid blue;
+}
+
+.cekOut{
+    cursor: pointer;
+}
+
+.cekOut:hover{
+    background-color: #0D6EFD;
+    color: #FFFFFF;
+}
+
