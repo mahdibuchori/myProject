@@ -108,6 +108,27 @@ const useDashboardStore = create(
                     console.log(error);
                 }
             },
+            fetchDashWip : async () => {
+                let date = new Date()
+                try {
+                    const { data } = await API_GSHEET.get(`exec?tipe=reportWip&date=${date}`);
+                    set(produce((state) => {
+                        state.dashWip = data;
+                        state.wipReady = true;
+                    }))
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            falseDashWip : async () => {
+                try {
+                    set(produce((state) => {
+                        state.wipReady = false;
+                    }))
+                } catch (error) {
+                    console.log(error);
+                }
+            },
         }),
         {
             name: 'dashboard-storage',
@@ -135,5 +156,10 @@ export const selectDashPpic = (state) => state.dashPpic;
 export const selectFetchDashPpic = (state) => state.fetchDashPpic;
 export const selectPpicReady = (state) => state.ppicReady;
 export const selectFalseDashPpic = (state) => state.falseDashPpic;
+
+export const selectDashWip = (state) => state.dashWip;
+export const selectFetchDashWip = (state) => state.fetchDashWip;
+export const selectWipReady = (state) => state.wipReady;
+export const selectFalseDashWip = (state) => state.falseDashWip;
 
 export default useDashboardStore;

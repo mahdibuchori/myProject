@@ -75,41 +75,45 @@ export const ParetoDaging = (props) => {
             console.log(props.name)
         }
         else{
-            const date = new Date(props.name);
-            const bln = date.getMonth();
-            const year = date.getFullYear();
-            const dataDaging = dataDashboard.daging;
-    
-            if(year > 2022 && year <2024){
-                const data = dataDaging.filter(x => x.bulan === buls[bln]);
-                const postIds = data.map((e) => {
-                    const ttl = parseFloat(e.total).toFixed(2);
-                    const newTotal = (parseFloat(ttl) * 1000 ) / 1000;
-                    return(
-                        {item: e.item, bulan: e.bulan, week1: e.week1, week2: e.week2, week3: e.week3, week4: e.week4, week5: e.week5, total : newTotal, avg : e.avg }
-                    )
-                })
-                const nilai = postIds.sort(function(a, b) {
-                    return b.total - a.total;
-                });
-    
-                if(nilai.length > 0){
-                    let jm = 0;
-                    if(nilai.length <=10){jm = nilai.length} else {jm = 10};
-                    let datas = [];
-                    for(let x= 0; x < jm; x++){
-                        const e = nilai[x]
-                        datas.push({item: e.item, bulan: e.bulan, total : e.total , avg : e.avg })
+            try {
+                const date = new Date(props.name);
+                const bln = date.getMonth();
+                const year = date.getFullYear();
+                const dataDaging = dataDashboard.daging;
+        
+                if(year > 2022 && year <2024){
+                    const data = dataDaging.filter(x => x.bulan === buls[bln]);
+                    const postIds = data.map((e) => {
+                        const ttl = parseFloat(e.total).toFixed(2);
+                        const newTotal = (parseFloat(ttl) * 1000 ) / 1000;
+                        return(
+                            {item: e.item, bulan: e.bulan, week1: e.week1, week2: e.week2, week3: e.week3, week4: e.week4, week5: e.week5, total : newTotal, avg : e.avg }
+                        )
+                    })
+                    const nilai = postIds.sort(function(a, b) {
+                        return b.total - a.total;
+                    });
+        
+                    if(nilai.length > 0){
+                        let jm = 0;
+                        if(nilai.length <=10){jm = nilai.length} else {jm = 10};
+                        let datas = [];
+                        for(let x= 0; x < jm; x++){
+                            const e = nilai[x]
+                            datas.push({item: e.item, bulan: e.bulan, total : e.total , avg : e.avg })
+                        }
+                        setFileName(datas);
                     }
-                    setFileName(datas);
+                    else{
+                        setFileName([])
+                    }
+                    
                 }
                 else{
                     setFileName([])
                 }
+            } catch (error) {
                 
-            }
-            else{
-                setFileName([])
             }
         }
     }
