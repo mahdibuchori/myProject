@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import '../dashboard.css';
 import { Badge, ListGroup } from 'react-bootstrap';
 import { NumericFormat } from 'react-number-format';
-import { LoadingPage } from '../../../LoadingPage/LoadingPage';
 import useDashboardStore, { selectDashPpic, selectFetchDashPpic, selectPpicReady } from '../../../store/dataDashboard';
 const buls = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli','Agustus','September','Oktober','November','Desember'];
 
@@ -13,10 +12,8 @@ export const ParetoDaging = (props) => {
     const dashboardReady = useDashboardStore(selectPpicReady);
 
     const [fileName, setFileName] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => { 
-        setIsLoading(true);
         onDashboard()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -33,7 +30,6 @@ export const ParetoDaging = (props) => {
     }, [props.name]);
 
     const onGridReady = () =>{
-        setIsLoading(false);
         const date = new Date();
         const month = date.getMonth();
         const year = date.getFullYear();
@@ -142,7 +138,6 @@ export const ParetoDaging = (props) => {
                 </ListGroup>
                 
             </div>
-            {isLoading ? <LoadingPage/> : ""}
         </>
     )
 }

@@ -307,7 +307,8 @@ export const ParetoPurch = (props) => {
             listData = postIds
         }
         else{
-            listData = postIds.filter((d) => d.tipe === isTipe);
+            if(isTipe === ""){listData = postIds}
+            else{listData = postIds.filter((d) => d.tipe === isTipe)}
         }
         
         let nilai = {}
