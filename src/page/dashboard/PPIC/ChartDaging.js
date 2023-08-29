@@ -16,7 +16,6 @@ import {
   } from 'chart.js';
 
 import { Chart } from 'react-chartjs-2';
-import { LoadingPage } from '../../../LoadingPage/LoadingPage';
 import useDashboardStore, { selectDashPpic, selectFetchDashPpic, selectPpicReady } from '../../../store/dataDashboard';
 
 ChartJS.register(
@@ -48,10 +47,8 @@ export const ChartDaging = (props) => {
   const [week4, setWeek4] = useState([]);
   const [week5, setWeek5] = useState([]);
   const [avg, setAvg] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => { 
-      setIsLoading(true);
       onDashboard()
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -68,7 +65,6 @@ export const ChartDaging = (props) => {
   }, [props.name]);
 
   const onGridReady = (x) =>{
-    setIsLoading(false); 
     const dataDaging = dataDashboard.daging;
     const result = dataDaging.filter((v,i,a)=>a.findIndex(v2=>(v2.bulan===v.bulan))===i);
     let bulans = result.map(d => { 
@@ -382,7 +378,6 @@ export const ChartDaging = (props) => {
             <Chart type='bar' data={data}  options={options}/>
           </div>
         </div>
-        {isLoading ? <LoadingPage/> : ""}
       </>
   )
 }

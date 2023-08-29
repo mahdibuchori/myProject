@@ -167,7 +167,105 @@ export const DashboardPP = () => {
 
         <Container className='mt-0' fluid>
             <div className='row'>
-                <div className='col-xl-9 col-lg-9 mb-2'>
+                <div className='col-xl-2 col-lg-2 mb-1'>
+                    <h6 className=''>Pengadan Barang</h6>
+                    <div class="d-flex align-items-center justify-content-between mb-1">
+                        
+                        <Form.Control
+                            type="month"
+                            className='text-center border border-primary text-primary'
+                            value={month}
+                            min="2020-08"
+                            onChange={(e) =>onSetDate(e)}
+                        />
+                    </div>
+                    <div className='row'>
+                        <div className='col-xl-12 col-lg-12 mb-2'>
+                            <div className='widget-flat card card'>
+                                <div className='card-body'>
+                                    <div className='float-end text-danger'>
+                                        <i class="bi bi-arrow-right-square"></i>
+                                    </div>
+                                    <h6 className='fw-normal mt-0 text-muted'>Pengajuan </h6>
+                                    <h3 className='mt-1 mb-0 float-end'>{jmlPengajuan}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='col-xl-12 col-lg-12 mb-2'>
+                            <div className='widget-flat card'>
+                                <div className='card-body'>
+                                    <div className='float-end text-warning'>
+                                        <i className="bi bi-recycle"></i>
+                                    </div>
+                                    <h6 className='fw-normal mt-0 text-muted'>Revisi</h6>
+                                    <h3 className='mt-1 mb-0 float-end'>{jmlRevisi}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='col-xl-12 col-lg-12 mb-2'>
+                            <div className='widget-flat card'>
+                                <div className='card-body'>
+                                    <div className='float-end text-primary'>
+                                        <i className="bi bi-check2-circle"></i>
+                                    </div>
+                                    <h6 className='fw-normal mt-0 text-muted'>Verifikasi</h6>
+                                    <h3 className='mt-1 mb-0 float-end'>{jmlVerify}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='col-xl-12 col-lg-12 mb-2'>
+                            <div className='widget-flat card'>
+                                <div className='card-body'>
+                                    <div className='float-end text-success'>
+                                        <i className="bi bi-truck"></i>
+                                    </div>
+                                    <h6 className='fw-normal mt-0 text-muted'>Selesai</h6>
+                                    <h3 className='mt-1 mb-0 float-end'>{jmlSelesai}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='col-sm-12'>
+                            <h6 
+                                className='mt-3 mb-3 float-end text-primary mylinkBo' 
+                                style={{borderBottom : '2px solid #287bff'}} 
+                                onClick={() =>pergiKe(`/main/${userData.user_divisi}/Pengadaan`)}>
+                                pergi ke pengadaan
+                                <i className="bi bi-arrow-right-short"></i>
+                            </h6>
+                        </div>
+
+                    </div>
+                </div>
+                <div className='col-xl-7 col-lg-7 mb-1'>
+                    <div className='row'>
+                        <div className='col-xl-4 col-lg-4'>
+                            <h6 className='mt-1 mb-1 float-end text-dark'>Nama Item : </h6>
+                        </div>
+                        <div className='col-xl-8 col-lg-8'>
+                            <Select
+                                className="basic-single"
+                                classNamePrefix="select"
+                                value={naMat}
+                                isClearable={false}
+                                isSearchable={true}
+                                name="color"
+                                options={item}
+                                onChange={e => handleSelect(e)}
+                            />
+                        </div>
+                    
+                        <div className='col-xl-12 col-lg-12 mb-2'>
+                            <WeaklyPurch name={nabar}/>
+                        </div>
+                        <div className='col-xl-12 col-lg-12 mb-2'>
+                            <MonthlyPurch name={nabar}/>
+                        </div>
+                    </div>
+                </div>
+                <div className='col-xl-3 col-lg-3 mb-1'>
+                    <ParetoPurch sendToParent={setIsMaterial}/>
+                </div>
+                {/* <div className='col-xl-9 col-lg-9 mb-2'>
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <h6 className=''>Pengadan Barang</h6>
                         <Form.Control
@@ -264,7 +362,7 @@ export const DashboardPP = () => {
                 </div>
                 <div className='col-xl-3 col-lg-3 mb-2'>
                     <ParetoPurch sendToParent={setIsMaterial}/>
-                </div>
+                </div> */}
             </div>
             
             

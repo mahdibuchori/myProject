@@ -124,10 +124,10 @@ export const DashboardFg = () => {
                             />
                         </div>
                     
-                        <div className='col-xl-6 col-lg-6 mb-2'>
+                        <div className='col-xl-12 col-lg-12 mb-2'>
                             <WeaklyFg name={nabar}/>
                         </div>
-                        <div className='col-xl-6 col-lg-6 mb-2'>
+                        <div className='col-xl-12 col-lg-12 mb-2'>
                             <WeaklyItFg name={nabar}/>
                         </div>
                     </div>

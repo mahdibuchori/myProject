@@ -25,8 +25,7 @@ ChartJS.register(
     Legend
   );
 
-const labels = ['januari', 'februari', 'maret', 'april', 'mei', 'juni', 'juli','agustus','september','oktober','november','desember'];
-
+const labels = ['januari', 'februari', 'maret', 'april', 'mei', 'juni', 'juli','agustus','september','oktober','november','desember','avg'];
 
 export const MonthlyPurch = (props) => {
     const onDashboard = useDashboardStore(selectFetchYdash);
@@ -59,10 +58,8 @@ export const MonthlyPurch = (props) => {
 
     const onGridReady = (x) =>{
         console.log(props.name)
-        console.log(item)
         setIsLoading(false); 
         const data = dataDashboard.data;
-        console.log(data)
         const resultItem = data.filter((v,i,a)=>a.findIndex(v2=>(v2.item===v.item))===i);
         let material = resultItem.map(d => { 
             return {value:  d.item, label: d.item}
@@ -135,6 +132,16 @@ export const MonthlyPurch = (props) => {
                     
                 })
             });
+
+            const sum = d2021.reduce((a, b) => a + b, 0);
+            const tSum = (parseFloat(sum / 12).toFixed(2));
+            d2021.push(parseFloat(tSum));
+            const sum1 = d2022.reduce((a, b) => a + b, 0);
+            const tSum1 = (parseFloat(sum1 / 12).toFixed(2));
+            d2022.push(parseFloat(tSum1));
+            const sum2 = d2023.reduce((a, b) => a + b, 0);
+            const tSum2 = (parseFloat(sum2 / 12).toFixed(2));
+            d2023.push(parseFloat(tSum2));
             
             setThn1(d2021);
             setThn2(d2022);
@@ -145,6 +152,7 @@ export const MonthlyPurch = (props) => {
     const performRefresh = () =>{
         if(props.name === ""){
             console.log(props.nama)
+            console.log(item)
         }
         else{
             setNabar(props.name)
@@ -212,6 +220,16 @@ export const MonthlyPurch = (props) => {
                     
                 })
             });
+
+            const sum = d2021.reduce((a, b) => a + b, 0);
+            const tSum = (parseFloat(sum / 12).toFixed(2));
+            d2021.push(parseFloat(tSum));
+            const sum1 = d2022.reduce((a, b) => a + b, 0);
+            const tSum1 = (parseFloat(sum1 / 12).toFixed(2));
+            d2022.push(parseFloat(tSum1));
+            const sum2 = d2023.reduce((a, b) => a + b, 0);
+            const tSum2 = (parseFloat(sum2 / 12).toFixed(2));
+            d2023.push(parseFloat(tSum2));
             
             setThn1(d2021);
             setThn2(d2022);

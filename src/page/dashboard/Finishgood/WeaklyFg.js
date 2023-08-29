@@ -119,12 +119,19 @@ export const WeaklyFg = (props) => {
                     nilai
                 )
             })
+            let dAvg = listData.map((d)=>{
+              let nilai = 0;
+              if(d.avgS === ''){nilai = 0}else{ nilai = parseFloat(d.avgS)}
+              return(
+                  nilai
+              )
+            })
             setWeek1(dWeek1);
             setWeek2(dWeek2);
             setWeek3(dWeek3);
             setWeek4(dWeek4);
             setWeek5(dWeek5);
-            setAvg([]);
+            setAvg(dAvg);
         }
       }
 
@@ -172,11 +179,19 @@ export const WeaklyFg = (props) => {
                     nilai
                 )
             })
+            let dAvg = listData.map((d)=>{
+              let nilai = 0;
+              if(d.avgS === ''){nilai = 0}else{ nilai = parseFloat(d.avgS)}
+              return(
+                  nilai
+              )
+            })
             setWeek1(dWeek1);
             setWeek2(dWeek2);
             setWeek3(dWeek3);
             setWeek4(dWeek4);
             setWeek5(dWeek5);
+            setAvg(dAvg);
           } catch (error) {
             // Swal.fire('Opsss..','Terjadi Kesalahan Harap Refresh Page','error')
           }
