@@ -12,6 +12,7 @@ import { LoadingPage } from '../../../LoadingPage/LoadingPage';
 import useAuthStore, { selectUser } from '../../../store/authLogin';
 import useDashboardStore, { selectYdash, selectFetchYdash, selectYdashReady } from '../../../store/dataDashboard';
 import usePengadaanStore, {selectPengadaan, selectFetchPengadaan, selectPengadaanReady, selectFalsePengadaan} from '../../../store/pengadaanBarang';
+import ListMounthly from './ListMounthly';
 
 
 
@@ -166,6 +167,7 @@ export const DashboardPP = () => {
         </Stack>
 
         <Container className='mt-0' fluid>
+            <ListMounthly />
             <div className='row'>
                 <div className='col-xl-2 col-lg-2 mb-1'>
                     <h6 className=''>Pengadan Barang</h6>
