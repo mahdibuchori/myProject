@@ -931,7 +931,7 @@ const ListMounthly = () => {
                     </Button>
                     <h6 style={{textAlign: 'center'}}>{e.item}</h6>
                     <h5 style={{textAlign: 'center',marginBottom: '10px'}}><NumericFormat value={nilai} displayType={'text'} thousandSeparator={true} prefix={kurs} /></h5>
-                    <div className="position-absolute bottom-0 end-0 px-2 p-2">
+                    <div className="position-absolute bottom-0 end-0 px-2 p-2 mt-5">
                         
                         <Badge bg={warna}>
                             <i className={icon}></i>
