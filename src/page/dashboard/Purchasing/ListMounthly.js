@@ -463,9 +463,7 @@ const ListMounthly = () => {
             }
         }
         let datas = [];
-        let jm = 0;
-        if(nilai.length <=10){jm = nilai.length} else {jm = 10};
-        for(let x= 0; x < jm; x++){
+        for(let x= 0; x < nilai.length; x++){
             if(year === 2023){
                 datas.push({ item: nilai[x].item, harga : nilai[x].th23 , qty : nilai[x].qth23, total : nilai[x].total23, satuan : nilai[x].satuan, tipe : nilai[x].tipe, persentase23 : nilai[x].persentase23, persentase22 : nilai[x].persentase22, persentase21 : nilai[x].persentase21  })
             }
@@ -638,9 +636,7 @@ const ListMounthly = () => {
             }
         }
         let datas = [];
-        let jm = 0;
-        if(nilai.length <=10){jm = nilai.length} else {jm = 10};
-        for(let x= 0; x < jm; x++){
+        for(let x= 0; x < nilai.length; x++){
             if(year === 2023){
                 datas.push({ item: nilai[x].item, harga : nilai[x].th23 , qty : nilai[x].qth23, total : nilai[x].total23, satuan : nilai[x].satuan, tipe : nilai[x].tipe, persentase23 : nilai[x].persentase23, persentase22 : nilai[x].persentase22, persentase21 : nilai[x].persentase21  })
             }
@@ -739,9 +735,6 @@ const ListMounthly = () => {
             setThn1(d2021);
             setThn2(d2022);
             setThn3(d2023);
-            console.log(d2021);
-            console.log(d2022);
-            console.log(d2023);
         }
         
     }
@@ -937,7 +930,7 @@ const ListMounthly = () => {
                         <i className="bi bi-graph-up"></i>
                     </Button>
                     <h6 style={{textAlign: 'center'}}>{e.item}</h6>
-                    <h5 style={{textAlign: 'center'}}><NumericFormat value={nilai} displayType={'text'} thousandSeparator={true} prefix={kurs} /></h5>
+                    <h5 style={{textAlign: 'center',marginBottom: '10px'}}><NumericFormat value={nilai} displayType={'text'} thousandSeparator={true} prefix={kurs} /></h5>
                     <div className="position-absolute bottom-0 end-0 px-2 p-2">
                         
                         <Badge bg={warna}>
